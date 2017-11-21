@@ -1,10 +1,12 @@
 {
   "pages": [
+    "pages/signup/signup",
     "pages/move/move",
     "pages/index/index",
     "pages/logs/logs",
     "pages/delivery/delivery",
-    "pages/member/member"
+    "pages/member/member",
+    "pages/moveaccess/moveaccess"
   ],
   "window": {
     "backgroundTextStyle": "light",

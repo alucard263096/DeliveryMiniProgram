@@ -1,6 +1,7 @@
 /**app.wxss**/
 
 @import "/style/fontawesome.wxss";
+@import "/style/weui.wxss";
 
 
 .container {
@@ -14,4 +15,14 @@
 } 
 page{
   background-color: #F2F2F2;
+}
+
+button[type="primary"] {
+color:#FFFFFF;
+background-color:#FF5155;
+
+}
+.button-hover[type="primary"] {
+color:#FFFFFF;
+background-color:#FA2D1F;
 }

@@ -1,0 +1,63 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__bd">
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{showTopTips}}</view>
+
+        <view class="weui-cells__title">请填写用户注册信息</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">头像</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <image src="../../images/logo-lg.svg" class='avatar'  wx:if="{{avatarUrl==''}}" bindtap='selectAvatarType'></image>
+                    <image src="{{avatarUrl}}" class='avatar'  wx:if="{{avatarUrl!=''}}"  bindtap='getPicture'></image>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">昵称</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入昵称" value='{{nickname}}'  bindinput="nicknamechange" maxlength='20'/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label" >手机号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input type='number' focus='true' bindinput="mobilechange" class="weui-input" placeholder="请输入手机号" maxlength='11' value='{{mobile}}' />
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">验证码</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入验证码" maxlength='6' bindinput="verifycodechange"  />
+                </view>
+                <view class="weui-cell__ft">
+                    <view class="weui-vcode-btn"  wx:if="{{reminderResend==0}}" bindtap='sendRegisterVerify'>获取验证码</view>
+                    <view class="weui-vcode-btn"  wx:if="{{reminderResend>0}}" style="color:gray" >重新发送({{reminderResend}})</view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__tips">我们将不会使用你的个人资料用于其它用途</view>
+
+        <checkbox-group bindchange="agreechange">
+            <label class="weui-agree" for="weuiAgree">
+                <view class="weui-agree__text">
+                    <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+                    <view class="weui-agree__checkbox-icon">
+                        <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+                    </view>
+                    阅读并同意<navigator url="/pages/generaltext/generaltext?keycode='useragreement'" class="weui-agree__link">《用户注册条款》</navigator>
+                </view>
+            </label>
+        </checkbox-group>
+
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="submitRegister">确定</button>
+        </view>
+    </view>
+</view>

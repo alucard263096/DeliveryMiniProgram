@@ -4,7 +4,12 @@ App({
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    wx.setStorageSync('logs', logs);
+
+
+    var APIConfig = require('ApiConfig.js');
+    this.apiconfig = new APIConfig();
+
     var that=this;
     // 登录
     wx.login({
@@ -13,10 +18,14 @@ App({
         console.log(res);
         var WechatApi = require('apis/wechat.js');
         var wechatApi=new WechatApi();
-        wechatApi.decryption({ code: res.code, grant_type:"authorization_code"},function(data){
+        wechatApi.decryption({ code: res.code, grant_type: "authorization_code" }, function (data) {
+          data=JSON.parse(data);
+          console.log("wuwuwu");
           console.log(data);
           that.globalData.openid = data.openid;
           that.globalData.session_key = data.session_key;
+          console.log(that.globalData);
+          console.log("miaomiaomiao");
 
           wx.getUserInfo({
             success: function (res) {
@@ -65,5 +74,6 @@ App({
     openid: "",
     session_key: "",
     userInfo: null
-  }
+  },
+  apiconfig: null
 })
