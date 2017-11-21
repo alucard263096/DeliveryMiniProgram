@@ -1,12 +1,41 @@
 {
-  "pages":[
+  "pages": [
+    "pages/move/move",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/delivery/delivery",
+    "pages/member/member"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FF5155",
+    "navigationBarTitleText": "万家灯火搬家公司",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#FF5155",
+    "borderStyle": "white",
+    "backgroundColor": "#f9f9f9",
+    "list": [
+      {
+        "text": "搬迁搬家",
+        "pagePath": "pages/move/move",
+        "iconPath": "images/icons/move_gray.png",
+        "selectedIconPath": "images/icons/move.png"
+      },
+      {
+        "text": "物流货运",
+        "pagePath": "pages/delivery/delivery",
+        "iconPath": "images/icons/delivery_gray.png",
+        "selectedIconPath": "images/icons/delivery.png"
+      },
+      {
+        "text": "个人中心",
+        "pagePath": "pages/member/member",
+        "iconPath": "images/icons/person_gray.png",
+        "selectedIconPath": "images/icons/person.png"
+      }
+    ]
   }
 }
