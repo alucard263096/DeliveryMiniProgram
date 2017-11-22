@@ -26,3 +26,7 @@ background-color:#FF5155;
 color:#FFFFFF;
 background-color:#FA2D1F;
 }
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}

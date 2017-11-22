@@ -23,7 +23,9 @@ App({
           console.log(data);
           that.globalData.openid = data.openid;
           that.globalData.session_key = data.session_key;
-
+          if (that.loginInfoReadyCallback){
+            that.loginInfoReadyCallback(data);
+          }
           wx.getUserInfo({
             success: function (res) {
               var userInfo = res.userInfo

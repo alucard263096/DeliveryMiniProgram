@@ -22,6 +22,7 @@ Page({
     showTopTips:""
   }, 
   submitRegister: function () {
+
     if (this.data.isAgree==false){
       this.setData({ showTopTips: "请先阅读并勾选同意《用户注册条款》" });
       return;
@@ -67,9 +68,9 @@ Page({
           //that.setData({ showTopTips: "" });
           //直接登录
         } else if (data.code == 0) {
-          wx.redirectTo({
-            url: '/pages/move/move',
-          })
+          wx.switchTab({
+            url: '../move/move'
+          });
         } else{
           that.setData({ showTopTips: "未知错误，请联系管理员" });
         }
@@ -181,6 +182,12 @@ Page({
    */
   onLoad: function (options) {
     var that=this;
+
+    app.loginInfoReadyCallback=res=>{
+      that.oauthlogin();;
+    };
+
+
     if (app.globalData.userInfo) {
       console.log(1);
       this.setData({
@@ -189,7 +196,6 @@ Page({
         gender: app.globalData.userInfo.gender
       });
 
-      that.oauthlogin();;
     } else if (this.data.canIUse) {
       console.log(2);
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -200,7 +206,6 @@ Page({
           nickname: res.userInfo.nickName,
           gender: res.userInfo.gender
         });
-        that.oauthlogin();
       }
     } else {
       console.log(3);
@@ -215,21 +220,20 @@ Page({
             nickname: res.userInfo.nickName,
             gender: res.userInfo.gender
           });
-          that.oauthlogin();
         }
       })
     }
   },
   oauthlogin:function(){
-    var that=this;
-    console.log("??"+app.globalData.openid);
+    var that = this;
     memberApi.oauthlogin({
       oauthtype: "MINI",
       oauthunionid: app.globalData.openid}, function (data) {
       if(data.code==0){
-        wx.redirectTo({
-          url: '/pages/move/move',
-        })
+        console.log("??redirectTo");
+        wx.switchTab({
+          url: '../move/move'
+        });
       }else{
         that.setData({ showSplash:false});
       }

@@ -1,7 +1,7 @@
 <!--pages/move/move.wxml-->
 <view class="content">  
   <view  class='block block-left' style='background-color:#FBB848;'>
-    <view>
+    <view bindtap='navigateToMoveAssess'>
       <image src="../../images/icons/calculator.png" class='icon' ></image>
       <view class='title'>报价评估</view>
     </view>

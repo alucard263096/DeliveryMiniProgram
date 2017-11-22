@@ -1,4 +1,7 @@
 // pages/move/move.js
+const app = getApp();
+var MemberApi = require('../../apis/member.js');
+var memberApi = new MemberApi();
 Page({
 
   /**
@@ -7,14 +10,17 @@ Page({
   data: {
   
   },
-
+  navigateToMoveAssess:function(){
+      wx.navigateTo({
+        url: '../moveassess/moveassess',
+      })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this;
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
