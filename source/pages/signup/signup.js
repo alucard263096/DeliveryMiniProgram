@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showSplash:true,
     isAgree:true,
     avatarUrl: "",
     nickname: "",
@@ -21,7 +22,6 @@ Page({
     showTopTips:""
   }, 
   submitRegister: function () {
-    console.log(app.globalData);
     if (this.data.isAgree==false){
       this.setData({ showTopTips: "请先阅读并勾选同意《用户注册条款》" });
       return;
@@ -59,7 +59,6 @@ Page({
       name:this.data.nickname,
       photo: this.data.avatarUrl
     },function(data){
-      console.log(data);
         if(data.code==-501){
           that.setData({ showTopTips: "验证码不正确" });
         } else if (data.code == - 403) {
@@ -155,14 +154,11 @@ Page({
                     "field": "file"
                   },
                   success: function (res) {
-                    console.log(res);
                     var data = res.data
                     if (data.substr(0, 7) == "success") {
                       data = data.split("|");
                       var avatarUrl = app.apiconfig.UploadFolderUrl + "/member/" + data[2];
-                      console.log(that.data);
                       that.setData({ avatarUrl: avatarUrl });
-                      console.log(that.data);
                     } else {
                       wx.showToast({
                         title: '上传失败，请重试',
@@ -184,13 +180,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this;
     if (app.globalData.userInfo) {
       console.log(1);
       this.setData({
         avatarUrl: app.globalData.userInfo.avatarUrl,
         nickname: app.globalData.userInfo.nickName,
         gender: app.globalData.userInfo.gender
-      })
+      });
+
+      that.oauthlogin();;
     } else if (this.data.canIUse) {
       console.log(2);
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -200,10 +199,12 @@ Page({
           avatarUrl: res.userInfo.avatarUrl,
           nickname: res.userInfo.nickName,
           gender: res.userInfo.gender
-        })
+        });
+        that.oauthlogin();
       }
     } else {
       console.log(3);
+      console.log(app.globalData);
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
@@ -213,12 +214,27 @@ Page({
             avatarUrl: res.userInfo.avatarUrl,
             nickname: res.userInfo.nickName,
             gender: res.userInfo.gender
-          })
+          });
+          that.oauthlogin();
         }
       })
     }
   },
-
+  oauthlogin:function(){
+    var that=this;
+    console.log("??"+app.globalData.openid);
+    memberApi.oauthlogin({
+      oauthtype: "MINI",
+      oauthunionid: app.globalData.openid}, function (data) {
+      if(data.code==0){
+        wx.redirectTo({
+          url: '/pages/move/move',
+        })
+      }else{
+        that.setData({ showSplash:false});
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -19,13 +19,10 @@ App({
         var WechatApi = require('apis/wechat.js');
         var wechatApi=new WechatApi();
         wechatApi.decryption({ code: res.code, grant_type: "authorization_code" }, function (data) {
-          data=JSON.parse(data);
-          console.log("wuwuwu");
+          data = JSON.parse(data);
           console.log(data);
           that.globalData.openid = data.openid;
           that.globalData.session_key = data.session_key;
-          console.log(that.globalData);
-          console.log("miaomiaomiao");
 
           wx.getUserInfo({
             success: function (res) {

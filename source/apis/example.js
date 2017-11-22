@@ -7,7 +7,8 @@
 class ExampleApi
 {
    //传参数，获取我的名字，请注意这个范例
-                hello(request_json,callback){
+                hello(request_json,callback, showLoading = true){
+					apiconfig.ShowLoading();
                   wx.request({
                     url: apiconfig.ServerUrl+'/example/hello', 
                     data:request_json,
@@ -24,6 +25,10 @@ class ExampleApi
                     fail:function(res){
                       console.log(res);
                       callback(false);
+                    },
+                    complete:function(res){
+                      console.log(res);
+                      apiconfig.CloseLoading();
                     }
                   })
                 };

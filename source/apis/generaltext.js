@@ -7,7 +7,8 @@
 class GeneraltextApi
 {
    //获取一般文字的信息
-                view(request_json,callback){
+                view(request_json,callback, showLoading = true){
+					apiconfig.ShowLoading();
                   wx.request({
                     url: apiconfig.ServerUrl+'/generaltext/view', 
                     data:request_json,
@@ -24,6 +25,10 @@ class GeneraltextApi
                     fail:function(res){
                       console.log(res);
                       callback(false);
+                    },
+                    complete:function(res){
+                      console.log(res);
+                      apiconfig.CloseLoading();
                     }
                   })
                 };

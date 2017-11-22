@@ -7,7 +7,8 @@
 class WechatApi
 {
    //解密微信相关
-                decryption(request_json,callback){
+                decryption(request_json,callback, showLoading = true){
+					apiconfig.ShowLoading();
                   wx.request({
                     url: apiconfig.ServerUrl+'/wechat/decryption', 
                     data:request_json,
@@ -24,6 +25,10 @@ class WechatApi
                     fail:function(res){
                       console.log(res);
                       callback(false);
+                    },
+                    complete:function(res){
+                      console.log(res);
+                      apiconfig.CloseLoading();
                     }
                   })
                 };
