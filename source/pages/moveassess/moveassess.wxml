@@ -1,4 +1,7 @@
 <!--pages/moveassess/moveassess.wxml-->
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">
+{{showTopTips}}
+</view>
 <view>
   <view class="block block-radius" style='background:#FBB848' >
     <view class='flex-row' style='font-size:80%;' bindtap='callOffice'>
@@ -50,7 +53,7 @@
   </view>
 
 
-  <view style='background:white;padding:2vh;'>
+  <view style='background:white;padding:2vh;' bindtap='selectfloor' >
     <text>楼层</text>
       <image  src="../../images/icons/right.png" style='height:3vh;width:3vh;margin-left:48vh; ' />
   </view>
@@ -58,19 +61,23 @@
     <view class='flex-row' style='font-size:70%;' >
       <text style='flex:1;'>搬出</text>
       <text style='flex:1;'>类型：</text>
-      <text style='flex:1;color:#cccccc'>无</text>
+      <text style='flex:1;color:#cccccc' wx:if="{{moveouttype==''}}">无</text>
+      <text style='flex:1;color:' wx:if="{{moveouttype!=''}}">{{moveouttype=="live"?"电梯":"楼梯"}}</text>
       <text style='flex:1;'>层数：</text>
-      <text style='flex:1;color:#cccccc'>无</text>
+      <text style='flex:1;color:#cccccc' wx:if="{{moveoutfloornumber==null}}">无</text>
+      <text style='flex:1;color:' wx:if="{{moveoutfloornumber!=null}}">{{moveoutfloornumber}}层</text>
     </view>
     <view class='flex-row' style='font-size:70%;' >
       <text style='flex:1;'>搬入</text>
       <text style='flex:1;'>类型：</text>
-      <text style='flex:1;color:#cccccc'>无</text>
+      <text style='flex:1;color:#cccccc' wx:if="{{moveintype==''}}">无</text>
+      <text style='flex:1;color:' wx:if="{{moveintype!=''}}">{{moveintype=="live"?"电梯":"楼梯"}}</text>
       <text style='flex:1;'>层数：</text>
-      <text style='flex:1;color:#cccccc'>无</text>
+      <text style='flex:1;color:#cccccc' wx:if="{{moveinfloornumber==null}}">无</text>
+      <text style='flex:1;color:' wx:if="{{moveinfloornumber!=null}}">{{moveinfloornumber}}层</text>
     </view>
     <view class='flex-row' style='font-size:70%;padding-top:2vh;' >
-      <text style='flex:1;text-align:right;'><text style='color:#cccccc;font-size:90%;'>费用小计（元）：</text><text style='color:red;font-size:130%;'>0</text></text>
+      <text style='flex:1;text-align:right;'><text style='color:#cccccc;font-size:90%;'>费用小计（元）：</text><text style='color:red;font-size:130%;'>{{movetotalamount}}</text></text>
     </view>
   </view>
 

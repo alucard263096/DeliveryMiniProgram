@@ -75,7 +75,7 @@
     </view>
   </view>
   <view class="flex-row" style='margin:2vh;'>
-  <button class="weui-btn flex-1" type="primary" bindtap="cancel" style='margin-top:0.3vh;margin-right:1vh;'>取消</button>
-  <button class="weui-btn flex-1" type="primary" bindtap="submit" style='margin-top:0.3vh;margin-left:1vh;'>确定</button>
+  <button class="weui-btn flex-1  font-75" type="primary" bindtap="cancel" style='margin-top:0.3vh;margin-right:1vh;'>取消</button>
+  <button class="weui-btn flex-1  font-75" type="primary" bindtap="submit" style='margin-top:0.3vh;margin-left:1vh;'>确定</button>
   </view>
 </view>

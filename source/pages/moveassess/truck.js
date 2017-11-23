@@ -99,13 +99,41 @@ Page({
   onLoad: function (options) {
     var that=this;
     that.setData({ uploadpath: apiconfig.UploadFolderUrl });
-    trucktypeApi.list({"orderby":"seq","status":"A"},function(data){
-      for (var i = 0; i < data.length; i++) {
-        data[i].qty = 0;
-        data[i].amount = 0;
-      }
-        that.setData({ trucktype:data});
+
+    var trucktype = JSON.parse(options.trucktype);
+    var distance = options.distance;
+    var moveamount = options.moveamount;
+    var endposition = options.endposition;
+    var startposition = options.startposition;
+
+    if(distance==0){
+      distance=32.5;
+    }
+    if (endposition == "") {
+      endposition = "深圳市福田区招商银行大厦";
+    }
+    if (startposition == "") {
+      startposition = "深圳市南山区沛鸿大厦";
+    }
+
+    this.setData({
+      trucktype: trucktype,
+      distance: distance,
+      moveamount: moveamount,
+      endposition: endposition,
+      startposition: startposition
     });
+    if(trucktype.length==0){
+      trucktypeApi.list({"orderby":"seq","status":"A"},function(data){
+        for (var i = 0; i < data.length; i++) {
+          data[i].qty = 0;
+          data[i].amount = 0;
+        }
+          that.setData({ trucktype:data});
+      });
+    }else{
+      this.calculateAmount();
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

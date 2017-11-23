@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/moveassess/floor",
     "pages/moveassess/moveassess",
+    "pages/moveassess/floor",
     "pages/moveassess/truck",
     "pages/signup/signup",
     "pages/move/move",
