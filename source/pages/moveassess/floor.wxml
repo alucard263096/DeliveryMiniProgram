@@ -1,0 +1,37 @@
+<view class='flex-row font-90' style='background:white;'>
+<view class="flex-1 light text-center padding-2 primary_under" wx:if="{{movetype=='out'}}">
+  搬出
+</view>
+<view class="flex-1 light text-center padding-2"  wx:if="{{movetype=='out'}}" bindtap='tomovein'>
+  搬入
+</view>
+
+<view class="flex-1 light text-center padding-2 " wx:if="{{movetype=='in'}}" bindtap='tomoveout'>
+  搬出
+</view>
+<view class="flex-1 light text-center padding-2 primary_under"  wx:if="{{movetype=='in'}}">
+  搬入
+</view>
+</view>
+
+<view class='block block-radius font-75' style='background:white;color:black;' wx:if="{{movetype=='out'}}">
+  <view style='border-left:2px solid #FF5155;padding-left:2vh' >
+    楼层类型
+  </view>
+  <view class='flex-row' style='margin:1vh;'>
+    <view class='flex-1 option text-center'  wx:if="{{moveouttype!='live'}}" bindtap='moveoutchange' id='live'>
+    电梯
+    </view>
+    <view class='flex-1 option text-center active'  wx:if="{{moveouttype=='live'}}">
+    电梯
+    </view>
+    <view class='flex-1 option text-center' wx:if="{{moveouttype!='floor'}}"  bindtap='moveoutchange' id='floor'>
+    楼梯
+    </view>
+    <view class='flex-1 option text-center  active' wx:if="{{moveouttype=='floor'}}">
+    楼梯
+    </view>
+    <view class='flex-1'>
+    </view>
+  </view>
+</view>

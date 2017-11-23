@@ -1,28 +1,22 @@
-// pages/moveassess/moveassess.js
+// pages/moveassess/floor.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    trucktype:[],
-    distince:0,
-    moveamount:0,
-    endposition:"",
-    startposition:""
+    movetype:"out",
+    moveouttype:""
   },
-  callOffice:function(){
-    wx.makePhoneCall({
-      phoneNumber: '4007008942' //仅为示例，并非真实的电话号码
-    })
+  tomovein:function(){
+    this.setData({movetype:"in"});
   },
-  selecttruck:function(){
-    wx.navigateTo({
-      url: 'truck',
-    })
+  tomoveout:function(){
+
+    this.setData({ movetype: "out" });
   },
-  truckselectedcallback:function(data){
-    this.setData({ trucktype: data.trucktype, distance: data.distance,moveamount:data.totalamount,startposition:data.startposition,endposition:data.endposition});
+  moveoutchange: function (e) {
+    this.setData({ moveouttype: e.target.id });
   },
   /**
    * 生命周期函数--监听页面加载

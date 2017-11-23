@@ -1,0 +1,81 @@
+<!--pages/moveassess/truck.wxml-->
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">
+{{showTopTips}}
+</view>
+<view style='margin-top:1vh;'>
+  <block wx:for-items="{{trucktype}}" wx:key="{{index}}">
+    <view class='flex-row' style='background:white;padding:2vh;' >
+        <view  style='flex:1'>
+        <image src="{{uploadpath}}/trucktype/{{item.img}}" style='width:12vh;height:12vh;border:solid 1px #cccccc;'></image>
+        </view>
+        <view class='flex-4' style='padding-left:2vh;'>
+          <view  class='flex-row'>
+            <text class='flex-4 font-90'>{{item.name}}</text>
+            <text  class='flex-1 text-right font-60' style='line-height: 6vh;' >{{item.price}}元/车</text>
+          </view>
+          <view class='flex-row'>
+            <view class='flex-1'>
+              <view class='no-margin'>
+                <text class='light font-60'>载重：</text>
+                <text class='font-60'>{{item.capacity}}</text>
+              </view>
+              <view class='no-margin'>
+                <text class='light font-60'>长*宽*高：</text>
+                <text class='font-60'>{{item.size}}</text>
+              </view>
+              <view class='no-margin'>
+                <text class='light font-60'>载货体积：</text>
+                <text class='font-60'>{{item.volume}}</text>
+              </view>
+            </view>
+            <view class='flex-1 text-right'>
+              <view style='margin-top:4.5vh;'>
+              <image src="../../images/icons/minus.png" style='height:3vh;width:3vh;' bindtap='minustruck' id="{{item.id}}" />
+              <text class='font-75' style='margin-left:1vh;margin-right:1vh;'>{{item.qty}}</text>
+              <image src="../../images/icons/plus.png"  style='height:3vh;width:3vh;'  bindtap='plustruck'  id="{{item.id}}"  />
+              </view>
+            </view>
+          </view>
+        </view>
+    </view>
+        <view  class='text-right no-margin' style='background:white;padding-right:2vh;padding-bottom:1vh;margin-bottom:1vh;'>
+           <text class='font-50 light'>费用小计（元）：</text>
+           <text class="primary">{{item.amount}}</text>
+        </view>
+  </block>
+
+
+  <view style='background:white;margin-top:1vh;margin-right:2vh;margin-left:2vh;padding:3vh;'>
+    <view class='flex-row font-60' style='border-bottom:solid 1px #f2f2f2;padding-bottom:2vh;'  >
+      <text style='margin-top:0.9vh;'>起</text>
+      <text style='margin-top:0.9vh;margin-left:4vh;'>{{startposition}}</text>
+    </view>
+    <view class='flex-row font-60' style='border-bottom:solid 1px #f2f2f2;padding-bottom:2vh;padding-top:1vh;'  >
+      <text style='margin-top:0.9vh;'>终</text>
+      <text style='margin-top:0.9vh;margin-left:4vh;'>{{endposition}}</text>
+    </view>
+    <view class='flex-row'>
+      <view class='flex-1'>
+        <text class='font-50 light'>实际距离：</text>
+        <text class='font-60'>{{distance}}km</text>
+      </view>
+      <view class='flex-1 text-right'>
+        <text class='font-60 light'>费用小计（元）：</text>
+        <text class='primary'>{{totalamount}}</text>
+      </view>
+    </view>
+  </view>
+
+
+
+  <view style='background:white;margin-top:1vh;margin-right:2vh;margin-left:2vh;padding:4vh;padding-top:1vh;'>
+    <text class='font-60'>说明</text>
+    <view style='background:#F2F2F2;padding:1vh;' class='font-60 light'>
+      以实际地图测算为准，超过10公里，按照10元/公里。车，300公里以上9折，500公里以上8折；其中4.2米货车早晚高峰期限行。
+    </view>
+  </view>
+  <view class="flex-row" style='margin:2vh;'>
+  <button class="weui-btn flex-1" type="primary" bindtap="cancel" style='margin-top:0.3vh;margin-right:1vh;'>取消</button>
+  <button class="weui-btn flex-1" type="primary" bindtap="submit" style='margin-top:0.3vh;margin-left:1vh;'>确定</button>
+  </view>
+</view>

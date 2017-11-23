@@ -1,0 +1,18 @@
+.padding-2{
+  padding:2vh;
+}
+.primary_under{
+  border-bottom:1px solid #FF5155;
+  color:#FF5155;
+}
+.option{
+  background: #F2F2F2;
+  border-radius: 4px;
+  margin-right:1vh;
+  padding:0.5vh;
+  
+}
+.active{
+  color:white;
+  background:#FF5155;
+}

@@ -1,12 +1,5 @@
 /* pages/moveassess/moveassess.wxss */
-.block{
-  padding:2vh;
-  margin:2vh;
-}
-.block-radius{
-  border-radius: 7px;
-  color:white;
-}
+
 .count-block{
   font-size:70%;
   padding-top:2vh;
