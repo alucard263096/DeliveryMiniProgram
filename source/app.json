@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/moveassess/moveassess",
+    "pages/moveassess/assemble",
+    "pages/moveassess/carry",
     "pages/moveassess/floor",
     "pages/moveassess/truck",
     "pages/signup/signup",

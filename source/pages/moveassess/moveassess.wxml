@@ -82,7 +82,7 @@
   </view>
 
 
-  <view style='background:white;padding:2vh;'>
+  <view style='background:white;padding:2vh;' bindtap='selectcarry'>
     <text>距离</text>
       <image  src="../../images/icons/right.png" style='height:3vh;width:3vh;margin-left:48vh; ' />
   </view>
@@ -90,30 +90,38 @@
     <view class='flex-row' style='font-size:70%;' >
       <text style='flex:1;'>搬出</text>
       <text style='flex:1;'>搬运距离：</text>
-      <text style='flex:2;color:#cccccc'>无</text>
+      <text style='flex:2;color:#cccccc' wx:if="{{carryouttype==''}}">无</text>
+      <text style='flex:2;'  wx:if="{{carryouttype!=''}}"> {{carryouttype=="less30"?"少于30m":""}} {{carryouttype=="30to50"?"30m-50m":""}}{{carryouttype=="50to100"?"50m-100m":""}}{{carryouttype=="more100"?"100m以上":""}}{{carryouttype=="underground"?"地下室进出":""}}</text>
     </view>
     <view class='flex-row' style='font-size:70%;' >
       <text style='flex:1;'>搬入</text>
       <text style='flex:1;'>搬运距离：</text>
-      <text style='flex:2;color:#cccccc'>无</text>
+      <text style='flex:2;color:#cccccc' wx:if="{{carryintype==''}}">无</text>
+      <text style='flex:2;'  wx:if="{{carryintype!=''}}">{{carryintype=="less30"?"少于30m":""}}{{carryintype=="30to50"?"30m-50m":""}} {{carryintype=="50to100"?"50m-100m":""}}{{carryintype=="more100"?"100m以上":""}}{{carryintype=="underground"?"地下室进出":""}}</text>
     </view>
     <view class='flex-row' style='font-size:70%;padding-top:2vh;' >
-      <text style='flex:1;text-align:right;'><text style='color:#cccccc;font-size:90%;'>费用小计（元）：</text><text style='color:red;font-size:130%;'>0</text></text>
+      <text style='flex:1;text-align:right;'><text style='color:#cccccc;font-size:90%;'>费用小计（元）：</text><text style='color:red;font-size:130%;'>{{carrytotalamount}}</text></text>
     </view>
   </view>
 
 
 
-  <view style='background:white;padding:2vh;'>
+  <view style='background:white;padding:2vh;' bindtap='selectassemble'>
     <text>拆装</text>
       <image  src="../../images/icons/right.png" style='height:3vh;width:3vh;margin-left:48vh; ' />
   </view>
   <view class="block " style='background:white;padding-top:2vh;padding-left:4vh;padding-right:4vh;' >
-    <view class='flex-row' style='font-size:70%;' >
+    <view class='flex-row' style='font-size:70%;' wx:if="{{assembleoptions.length==0}}" >
       <text style='flex:1;color:#cccccc;text-align:center;'>无</text>
     </view>
+      <block wx:for-items="{{assembleoptions}}" wx:key="{{index}}">
+    <view class='flex-row' style='font-size:70%;' wx:if="{{item.qty>0}}" >
+      <text style='flex:1;'>{{item.name}}：</text>
+      <text style='flex:1;'>{{item.qty}} {{item.unit}}</text>
+    </view>
+    </block>
     <view class='flex-row' style='font-size:70%;padding-top:2vh;' >
-      <text style='flex:1;text-align:right;'><text style='color:#cccccc;font-size:90%;'>费用小计（元）：</text><text style='color:red;font-size:130%;'>0</text></text>
+      <text style='flex:1;text-align:right;'><text style='color:#cccccc;font-size:90%;'>费用小计（元）：</text><text style='color:red;font-size:130%;'>{{assembletotalamount}}</text></text>
     </view>
   </view>
 

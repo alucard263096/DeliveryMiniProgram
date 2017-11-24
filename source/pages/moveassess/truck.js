@@ -42,7 +42,7 @@ Page({
     var that=this;
     wx.showModal({
       title: '确认',
-      content: '搬运金额为'+this.data.totalamount.toString()+"元，确定提交吗？",
+      content: '车辆费用为'+this.data.totalamount.toString()+"元，确定提交吗？",
       success: function (res) {
         if (res.confirm) {
           var pages = getCurrentPages();

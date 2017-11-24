@@ -16,7 +16,15 @@ Page({
     moveouttype: "",
     moveintotalamount: 0,
     moveinfloornumber: null,
-    moveintype: ""
+    moveintype: "",
+
+    carrytotalamount: 0,
+    carryouttotalamount: 0,
+    carryouttype: "",
+    carryintotalamount: 0,
+    carryintype: "",
+    assembleoptions:[],
+    assembletotalamount:0
   },
   callOffice:function(){
     wx.makePhoneCall({
@@ -38,6 +46,17 @@ Page({
       + "&startposition=" + this.data.startposition.toString(),
     })
   },
+  selectassemble: function () {
+
+    // trucktype: [],
+    //   distance:0,
+    //     moveamount:0,
+    //       endposition:"",
+    //         startposition: "",
+    wx.navigateTo({
+      url: 'assemble?options=' + JSON.stringify(this.data.assembleoptions)
+    })
+  },
   selectfloor: function () {
 
     // movetotalamount: 0,
@@ -46,22 +65,24 @@ Page({
     //       moveouttype: "",
     //         moveintotalamount: 0,
     //           moveinfloornumber: null,
-    var url =  'floor'
-      + "?moveouttotalamount=" + this.data.moveouttotalamount.toString()
-      + "&moveoutfloornumber=" + (this.data.moveoutfloornumber == null ? 0 : this.data.moveoutfloornumber).toString()
-      + "&moveouttype=" + this.data.moveouttype
-      + "&moveintotalamount=" + this.data.moveintotalamount.toString()
-      + "&moveinfloornumber=" + (this.data.moveinfloornumber == null ? 0 : this.data.moveinfloornumber).toString()
-      + "&moveintype=" + this.data.moveintype;
-    console.log(url);
+    
     wx.navigateTo({
                 url: 'floor'
                 + "?moveouttotalamount=" + this.data.moveouttotalamount.toString()
-                  + "&moveoutfloornumber=" + (this.data.moveoutfloornumber == null ? 0 : this.data.moveoutfloornumber).toString()
+                + "&moveoutfloornumber=" + (this.data.moveoutfloornumber == null ? 0 : this.data.moveoutfloornumber).toString()
                 + "&moveouttype=" + this.data.moveouttype
                 + "&moveintotalamount=" + this.data.moveintotalamount.toString()
                 + "&moveinfloornumber=" + (this.data.moveinfloornumber == null ? 0 : this.data.moveinfloornumber).toString()
-                + + "&moveintype=" + this.data.moveintype
+                + "&moveintype=" + this.data.moveintype
+    })
+  },
+  selectcarry: function () {
+    wx.navigateTo({
+      url: 'carry'
+      + "?carryouttotalamount=" + this.data.carryouttotalamount.toString()
+      + "&carryouttype=" + this.data.carryouttype
+      + "&carryintotalamount=" + this.data.carryintotalamount.toString()
+      + "&carryintype=" + this.data.carryintype
     })
   },
   truckselectedcallback:function(data){
@@ -81,8 +102,28 @@ Page({
       moveouttype: data.moveouttype,
       moveinfloornumber: data.moveinfloornumber,
       moveintype: data.moveintype,
+      moveouttotalamount: data.moveintotalamount,
+      moveouttotalamount: data.moveouttotalamount,
       movetotalamount: data.moveintotalamount + data.moveouttotalamount});
 
+  },
+  carryselectedcallback: function (data) {
+    
+    this.setData({
+      carryouttype: data.carryouttype,
+      carryintype: data.carryintype,
+      carryintotalamount: data.carryintotalamount,
+      carryouttotalamount: data.carryouttotalamount,
+      carrytotalamount: data.carryintotalamount + data.carryouttotalamount
+    });
+
+  },
+  assembleselectedcallback:function(data){
+
+    this.setData({
+      assembleoptions: data.options,
+      assembletotalamount: data.totalamount
+    });
   },
   /**
    * 生命周期函数--监听页面加载

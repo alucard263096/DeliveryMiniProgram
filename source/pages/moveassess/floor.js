@@ -26,7 +26,7 @@ Page({
     var that = this;
     wx.showModal({
       title: '确认',
-      content: '搬运金额为' + (this.data.moveouttotalamount + this.data.moveintotalamount).toString() + "元，确定提交吗？",
+      content: '楼层费用为' + (this.data.moveouttotalamount + this.data.moveintotalamount).toString() + "元，确定提交吗？",
       success: function (res) {
         if (res.confirm) {
           var pages = getCurrentPages();

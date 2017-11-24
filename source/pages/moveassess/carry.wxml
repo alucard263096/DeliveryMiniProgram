@@ -1,0 +1,102 @@
+<view class='flex-row font-90' style='background:white;'>
+<view class="flex-1 light text-center padding-2 primary_under" wx:if="{{carrytype=='out'}}">
+  搬出
+</view>
+<view class="flex-1 light text-center padding-2"  wx:if="{{carrytype=='out'}}" bindtap='tocarryin'>
+  搬入
+</view>
+
+<view class="flex-1 light text-center padding-2 " wx:if="{{carrytype=='in'}}" bindtap='tocarryout'>
+  搬出
+</view>
+<view class="flex-1 light text-center padding-2 primary_under"  wx:if="{{carrytype=='in'}}">
+  搬入
+</view>
+</view>
+
+<view class='block block-radius font-75' style='background:white;color:black;' wx:if="{{carrytype=='out'}}">
+  <view style='border-left:2px solid #FF5155;padding-left:2vh' >
+    远距离搬运路程
+  </view>
+  <view class='flex-row' style='margin:1vh;'>
+    <view class='flex-1 option text-center {{carryouttype=="less30"?"active":""}}' bindtap='carryoutchange' id='less30'>
+    低于30m
+    </view>
+    <view class='flex-1 option text-center  {{carryouttype=="30to50"?"active":""}}' bindtap='carryoutchange' id='30to50'>
+    30m-50m
+    </view>
+    <view class='flex-1 option text-center  {{carryouttype=="50to100"?"active":""}}' bindtap='carryoutchange' id='50to100'>
+    50m-100m
+    </view>
+    </view>
+    <view class='flex-row' style='margin:1vh;'>
+    <view class='flex-1 option text-center  {{carryouttype=="more100"?"active":""}}' bindtap='carryoutchange' id='more100'>
+    100m以上
+    </view>
+    <view class='flex-1 option text-center  {{carryouttype=="underground"?"active":""}}' bindtap='carryoutchange' id='underground'>
+    地下室进出
+    </view>
+    <view class='flex-1'>
+    </view>
+  </view>
+
+  <view class="text-right">
+    <text class=' light'>费用小计（元）：</text><text class='font-120 primary'>{{carryouttotalamount}}</text>
+  </view>
+</view>
+
+
+<view class='block block-radius font-75' style='background:white;color:black;' wx:if="{{carrytype=='in'}}">
+  <view style='border-left:2px solid #FF5155;padding-left:2vh' >
+    远距离搬运路程
+  </view>
+  <view class='flex-row' style='margin:1vh;'>
+    <view class='flex-1 option text-center {{carryintype=="less30"?"active":""}}' bindtap='carryinchange' id='less30'>
+    低于30m
+    </view>
+    <view class='flex-1 option text-center  {{carryintype=="30to50"?"active":""}}' bindtap='carryinchange' id='30to50'>
+    30m-50m
+    </view>
+    <view class='flex-1 option text-center  {{carryintype=="50to100"?"active":""}}' bindtap='carryinchange' id='50to100'>
+    50m-100m
+    </view>
+    </view>
+    <view class='flex-row' style='margin:1vh;'>
+    <view class='flex-1 option text-center  {{carryintype=="more100"?"active":""}}' bindtap='carryinchange' id='more100'>
+    100m以上
+    </view>
+    <view class='flex-1 option text-center  {{carryintype=="underground"?"active":""}}' bindtap='carryinchange' id='underground'>
+    地下室进出
+    </view>
+    <view class='flex-1'>
+    </view>
+  </view>
+
+  <view style='border-left:2px solid #FF5155;padding-left:2vh'  wx:if="{{carryintype=='floor'}}">
+    楼层数量
+  </view>
+  <view class='flex-row' style='margin:1vh;'  wx:if="{{carryintype=='floor'}}">
+    <input class='flex-1 option text-center' type='number' placeholder='请填写楼层' bindinput="carryinfloornumberchange" />
+    <view class='flex-1'>
+    </view>
+    <view class='flex-1'>
+    </view>
+  </view>
+  <view class="text-right">
+    <text class=' light'>费用小计（元）：</text><text class='font-120 primary'>{{carryintotalamount}}</text>
+  </view>
+</view>
+
+
+<view class='border-radius' style='background:white;margin-top:1vh;margin-right:2vh;margin-left:2vh;padding:4vh;padding-top:1vh;'>
+    <text class='font-60'>说明</text>
+    <view style='background:#F2F2F2;padding:1vh;' class='font-60 light'>
+      <view>超过30米，按30元、50元、100元三个档次加收距离费。</view>
+      <view>超过100米，同时又有地下室出入，只收取100元。</view>
+    </view>
+</view>
+
+  <view class="flex-row" style='margin:2vh;'>
+  <button class="weui-btn flex-1 font-75" type="primary" bindtap="cancel" style='margin-top:0.3vh;margin-right:1vh;'>取消</button>
+  <button class="weui-btn flex-1 font-75" type="primary" bindtap="submit" style='margin-top:0.3vh;margin-left:1vh;'>确定</button>
+  </view>
