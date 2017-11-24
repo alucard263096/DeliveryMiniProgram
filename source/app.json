@@ -10,7 +10,10 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/delivery/delivery",
-    "pages/member/member"
+    "pages/member/member",
+    "pages/moveassess/bigstuff",
+    "pages/moveassess/specialstuff",
+    "pages/moveassess/time"
   ],
   "window": {
     "backgroundTextStyle": "light",

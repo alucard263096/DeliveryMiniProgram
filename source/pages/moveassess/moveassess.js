@@ -24,11 +24,21 @@ Page({
     carryintotalamount: 0,
     carryintype: "",
     assembleoptions:[],
-    assembletotalamount:0
+    assembletotalamount: 0,
+    bigstuffoptions: [],
+    bigstufftotalamount: 0,
+
+    specialstuffoptions: [],
+    specialstufftotalamount: 0,
+
+    time:"",
+    timetotalamount:0,
+
+    totalamount:0
   },
   callOffice:function(){
     wx.makePhoneCall({
-      phoneNumber: '4007008942' //仅为示例，并非真实的电话号码
+      phoneNumber: '4007008942' 
     })
   },
   selecttruck:function(){
@@ -55,6 +65,39 @@ Page({
     //         startposition: "",
     wx.navigateTo({
       url: 'assemble?options=' + JSON.stringify(this.data.assembleoptions)
+    })
+  },
+  selectbigstuff: function () {
+
+    // trucktype: [],
+    //   distance:0,
+    //     moveamount:0,
+    //       endposition:"",
+    //         startposition: "",
+    wx.navigateTo({
+      url: 'bigstuff?options=' + JSON.stringify(this.data.bigstuffoptions)
+    })
+  },
+  selectspecialstuff: function () {
+
+    // trucktype: [],
+    //   distance:0,
+    //     moveamount:0,
+    //       endposition:"",
+    //         startposition: "",
+    wx.navigateTo({
+      url: 'specialstuff?options=' + JSON.stringify(this.data.specialstuffoptions)
+    })
+  },
+  selecttime: function () {
+
+    // trucktype: [],
+    //   distance:0,
+    //     moveamount:0,
+    //       endposition:"",
+    //         startposition: "",
+    wx.navigateTo({
+      url: 'time?time=' + this.data.time
     })
   },
   selectfloor: function () {
@@ -86,7 +129,8 @@ Page({
     })
   },
   truckselectedcallback:function(data){
-    this.setData({ trucktype: data.trucktype, distance: data.distance,moveamount:data.totalamount,startposition:data.startposition,endposition:data.endposition});
+    this.setData({ trucktype: data.trucktype, distance: data.distance, moveamount: data.totalamount, startposition: data.startposition, endposition: data.endposition });
+    this.calculateAmount();
   },
   floorselectedcallback:function(data){
     //data.moveoutfloornumber = data.moveoutfloornumber == null ? 0 : data.moveoutfloornumber;
@@ -104,7 +148,9 @@ Page({
       moveintype: data.moveintype,
       moveouttotalamount: data.moveintotalamount,
       moveouttotalamount: data.moveouttotalamount,
-      movetotalamount: data.moveintotalamount + data.moveouttotalamount});
+      movetotalamount: data.moveintotalamount + data.moveouttotalamount
+    });
+    this.calculateAmount();
 
   },
   carryselectedcallback: function (data) {
@@ -116,6 +162,7 @@ Page({
       carryouttotalamount: data.carryouttotalamount,
       carrytotalamount: data.carryintotalamount + data.carryouttotalamount
     });
+    this.calculateAmount();
 
   },
   assembleselectedcallback:function(data){
@@ -124,6 +171,43 @@ Page({
       assembleoptions: data.options,
       assembletotalamount: data.totalamount
     });
+    this.calculateAmount();
+  },
+  bigstuffselectedcallback: function (data) {
+
+    this.setData({
+      bigstuffoptions: data.options,
+      bigstufftotalamount: data.totalamount
+    });
+    this.calculateAmount();
+  },
+  specialstuffselectedcallback: function (data) {
+
+    this.setData({
+      specialstuffoptions: data.options,
+      specialstufftotalamount: data.totalamount
+    });
+    this.calculateAmount();
+  },
+  timeselectedcallback: function (data) {
+
+    this.setData({
+      time: data.time
+    });
+    this.calculateAmount();
+  },
+  calculateAmount(){
+    var totalamount = this.data.moveamount + this.data.movetotalamount + this.data.carrytotalamount + this.data.assembletotalamount + this.data.bigstufftotalamount + this.data.specialstufftotalamount;
+      var timetotalamount=0;
+      if(this.data.time=="19to23"){
+        timetotalamount = Math.round(totalamount * 0.3);
+      } else if (this.data.time == "23to6") {
+        timetotalamount = Math.round(totalamount * 0.7);
+      }
+      totalamount = totalamount + timetotalamount;
+
+      this.setData({ totalamount: totalamount, timetotalamount: timetotalamount});
+
   },
   /**
    * 生命周期函数--监听页面加载

@@ -1,30 +1,31 @@
 // pages/carryassess/floor.js
+var SpecialstuffoptionApi = require('../../apis/specialstuffoption.js');
+var specialstuffoptionApi = new SpecialstuffoptionApi();
+var APIConfig = require('../../ApiConfig.js');
+var apiconfig = new APIConfig();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    carryouttotalamount: 0,
-    carryouttype: "",
-    carryintotalamount: 0,
-    carryintype: "",
-    carrytype: "out",
-    showTopTips: ""
+    time: ""
   },
   cancel: function (e) {
     wx.navigateBack({
 
     });
+  }, timeselect(e){
+      this.setData({time:e.target.id});
   },
   submit: function () {
-    this.calculatoramount();
+
     this.setData({ showTopTips: "" });
-    console.log(this.data);
     var that = this;
     wx.showModal({
       title: '确认',
-      content: '距离费用为' + (this.data.carryouttotalamount + this.data.carryintotalamount).toString() + "元，确定提交吗？",
+      content: "确定提交吗？",
       success: function (res) {
         if (res.confirm) {
           var pages = getCurrentPages();
@@ -32,7 +33,7 @@ Page({
             //上一个页面实例对象
             var prePage = pages[pages.length - 2];
             //关键在这里
-            prePage.carryselectedcallback(that.data);
+            prePage.timeselectedcallback(that.data);
           }
           wx.navigateBack();
         } else if (res.cancel) {
@@ -41,38 +42,6 @@ Page({
       }
     })
 
-  },
-  tocarryin: function () {
-    this.setData({ carrytype: "in" });
-  },
-  tocarryout: function () {
-
-    this.setData({ carrytype: "out" });
-  },
-  carryoutchange: function (e) {
-    this.setData({ carryouttype: e.target.id });
-    this.calculatoramount();
-  },
-  carryinchange: function (e) {
-    this.setData({ carryintype: e.target.id });
-    this.calculatoramount();
-  },
-  calculatoramount() {
-    var carryinamount = this.tryamount(this.data.carryintype);
-    var carryoutamount = this.tryamount(this.data.carryouttype);
-    
-
-    this.setData({ carryintotalamount: carryinamount, carryouttotalamount: carryoutamount });
-  },
-  tryamount(carrytype){
-    switch (carrytype){
-      case "less30": return 0;
-      case "30to50": return 30;
-      case "50to100": return 50;
-      case "more100": return 100;
-      case "underground": return 0;
-      default: return 0;
-    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -85,15 +54,11 @@ Page({
     //       carryouttype: "",
     //         carryintotalamount: 0,
     //           carryinfloornumber: null,
-    console.log(options);
-    this.setData({
-      carryouttotalamount: options.carryouttotalamount
-      , carryouttype: options.carryouttype
-      , carryintotalamount: options.carryintotalamount
-      , carryintype: options.carryintype
-    });
+    var that = this;
+    var time = options.time;
 
-    this.calculatoramount();
+    this.setData({ time: time });
+
 
   },
 

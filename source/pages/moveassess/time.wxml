@@ -1,0 +1,37 @@
+
+
+<view class='block block-radius font-75' style='background:white;color:black;' >
+  <view style='border-left:2px solid #FF5155;padding-left:2vh' >
+    选择时间段
+  </view>
+    <view class='flex-row' style='margin:1vh;padding:1vh;border-bottom:1px solid #cccccc'>
+      <view class='flex-1 text-center'>
+        <image src="../../images/icons/{{time=='6to19'?'check_active':'check'}}.png"  style='height:3vh;width:3vh;'  bindtap='timeselect'  id="6to19"  />
+      </view>
+      <text class='flex-4'>6:00~19:00 时间段</text>
+      <text class='flex-3 text-right'></text>
+    </view>
+    <view class='flex-row' style='margin:1vh;padding:1vh;border-bottom:1px solid #cccccc'>
+      <view class='flex-1 text-center'>
+        <image src="../../images/icons/{{time=='19to23'?'check_active':'check'}}.png"  style='height:3vh;width:3vh;'  bindtap='timeselect'  id="19to23"  />
+      </view>
+      <text class='flex-4'>6:00~19:00 时间段</text>
+      <text class='flex-3 text-right primary'>* 加收30%费用</text>
+    </view>
+    <view class='flex-row' style='margin:1vh;padding:1vh;border-bottom:1px solid #cccccc'>
+      <view class='flex-1 text-center'>
+        <image src="../../images/icons/{{time=='23to6'?'check_active':'check'}}.png"  style='height:3vh;width:3vh;'  bindtap='timeselect'  id="23to6"  />
+      </view>
+      <text class='flex-4'>23:00~6:00 时间段</text>
+      <text class='flex-3 text-right primary'>* 加收70%费用</text>
+    </view>
+</view>
+
+
+
+
+
+  <view class="flex-row" style='margin:2vh;'>
+  <button class="weui-btn flex-1 font-75" type="primary" bindtap="cancel" style='margin-top:0.3vh;margin-right:1vh;'>取消</button>
+  <button class="weui-btn flex-1 font-75" type="primary" bindtap="submit" style='margin-top:0.3vh;margin-left:1vh;'>确定</button>
+  </view>

@@ -1,0 +1,41 @@
+
+
+<view class='block block-radius font-75' style='background:white;color:black;' >
+  <view style='border-left:2px solid #FF5155;padding-left:2vh' >
+    选择物品
+  </view>
+    <block wx:for-items="{{options}}" wx:key="{{index}}">
+    <view class='flex-row' style='margin:1vh;padding:1vh;border-bottom:1px solid #cccccc'>
+      <text class='flex-4'>{{item.name}}</text>
+      <view class='flex-1 text-center'>
+      <image  src="../../images/icons/minus.png"  style='height:3vh;width:3vh;'  bindtap='minus'  id="{{item.id}}"  />
+      </view>
+      <text class='flex-1 text-center'>{{item.qty}}</text>
+      <view class='flex-1 text-center'>
+      <image src="../../images/icons/plus.png"  style='height:3vh;width:3vh;'  bindtap='plus'  id="{{item.id}}"  />
+      </view>
+      <text class='flex-3 text-right'>{{item.price}}元/{{item.unit}}</text>
+    </view>
+    </block>
+
+  <view class="text-right">
+    <text class=' light'>费用小计（元）：</text><text class='font-120 primary'>{{totalamount}}</text>
+  </view>
+</view>
+
+
+
+
+<view class='border-radius' style='background:white;margin-top:1vh;margin-right:2vh;margin-left:2vh;padding:4vh;padding-top:1vh;'>
+    <text class='font-60'>说明</text>
+    <view style='background:#F2F2F2;padding:1vh;' class='font-60 light'>
+      <view>钢琴：楼层费50元/层，电梯按1层计费</view>
+      <view>保险柜：按保险柜高度计费，100cm以下免费</view>
+      <view>全新5层瓦楞纸箱，规格：50*40*50cm</view>
+    </view>
+</view>
+
+  <view class="flex-row" style='margin:2vh;'>
+  <button class="weui-btn flex-1 font-75" type="primary" bindtap="cancel" style='margin-top:0.3vh;margin-right:1vh;'>取消</button>
+  <button class="weui-btn flex-1 font-75" type="primary" bindtap="submit" style='margin-top:0.3vh;margin-left:1vh;'>确定</button>
+  </view>
