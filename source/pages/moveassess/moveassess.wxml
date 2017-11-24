@@ -141,8 +141,21 @@
   </view>
 
   <view style='background:white;padding:2vh;'>
+    <text>特殊件</text>
+      <image  src="../../images/icons/right.png" style='height:3vh;width:3vh;margin-left:44vh; ' />
+  </view>
+  <view class="block " style='background:white;padding-top:2vh;padding-left:4vh;padding-right:4vh;' >
+    <view class='flex-row' style='font-size:70%;' >
+      <text style='flex:1;color:#cccccc;text-align:center;'>无</text>
+    </view>
+    <view class='flex-row' style='font-size:70%;padding-top:2vh;' >
+      <text style='flex:1;text-align:right;'><text style='color:#cccccc;font-size:90%;'>费用小计（元）：</text><text style='color:red;font-size:130%;'>0</text></text>
+    </view>
+  </view>
+
+  <view style='background:white;padding:2vh;'>
     <text>特殊时间段</text>
-      <image  src="../../images/icons/right.png" style='height:3vh;width:3vh;margin-left:48vh; ' />
+      <image  src="../../images/icons/right.png" style='height:3vh;width:3vh;margin-left:38vh; ' />
   </view>
   <view class="block " style='background:white;padding-top:2vh;padding-left:4vh;padding-right:4vh;' >
     <view class='flex-row' style='font-size:70%;' >
