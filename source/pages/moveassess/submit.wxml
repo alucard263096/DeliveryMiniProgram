@@ -1,0 +1,40 @@
+<!--pages/moveassess/submit.wxml-->
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">
+{{showTopTips}}
+</view>
+  <view class="block " style='background:white;padding-top:2vh;padding-left:4vh;padding-right:4vh;font-size:70%;' >
+    <view class='flex-row'  >
+      <text style='flex:1;color:#cccccc;'>预约日期：</text>
+      <picker class='flex-3' style='background:#f2f2f2;padding:0.5vh;' mode="date" value="{{date}}" start="{{startdate}}" end="{{enddate}}" bindchange="bindDateChange">
+      {{date}}
+      </picker>
+    </view>
+    <view class='flex-row' style='margin-top:2vh;' >
+      <text style='flex:1;color:#cccccc;'>预约时间：</text>
+      <picker  class='flex-3' style='background:#f2f2f2;padding:0.5vh;'  mode="time" value="{{time}}"  bindchange="bindTimeChange">
+        <view class="picker">
+          {{time}}
+        </view>
+      </picker>
+    </view>
+    <view class='flex-row' style='margin-top:2vh;' >
+      <text style='flex:1;color:#cccccc;'>联系人：</text>
+      <input style='flex:3;background:#f2f2f2;padding:0.5vh;' placeholder='请输入联系人姓名' bindinput='setValue' id="contactname" />
+    </view>
+    <view class='flex-row' style='margin-top:2vh;' >
+      <text style='flex:1;color:#cccccc;'>联系电话：</text>
+      <input type='number' style='flex:3;background:#f2f2f2;padding:0.5vh;' placeholder='请输入联系电话' bindinput='setValue'  id="contactnumber" />
+    </view>
+    <view class='flex-row' style='margin-top:2vh;' >
+      <text style='flex:1;color:#cccccc;'>联系人2：</text>
+      <input style='flex:3;background:#f2f2f2;padding:0.5vh;' placeholder='请输入联系人姓名' bindinput='setValue' id="contactname2" />
+    </view>
+    <view class='flex-row' style='margin-top:2vh;' >
+      <text style='flex:1;color:#cccccc;'>联系电话2：</text>
+      <input type='number' style='flex:3;background:#f2f2f2;padding:0.5vh;' placeholder='请输入联系电话' bindinput='setValue'  id="contactnumber2" />
+    </view>
+  </view>
+
+<view class="flex-row" style='margin-top:6vh;margin-left:15vh;margin-right:15vh;'>
+  <button class="weui-btn flex-1" type="primary" bindtap="submit" style='margin-top:0.3vh;margin-right:1vh;'>预约</button>
+</view>

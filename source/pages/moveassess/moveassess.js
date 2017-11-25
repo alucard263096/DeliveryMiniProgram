@@ -209,11 +209,31 @@ Page({
       this.setData({ totalamount: totalamount, timetotalamount: timetotalamount});
 
   },
+  submitRegister(){
+    if(this.data.moveamount==0){
+      wx.showToast({
+        title: '你还没选择搬运方式，请先选择',
+      });
+      return;
+    }
+    var that=this;
+    wx.showModal({
+      title: '确认',
+      content: '费用一共为' + (this.data.totalamount).toString() + "元，确定提交吗？",
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: 'submit?moveinfo=' + JSON.stringify(that.data),
+          });
+        }
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    
   },
 
   /**

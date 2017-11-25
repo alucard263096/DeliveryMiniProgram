@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/moveassess/moveassess",
+    "pages/moveassess/submit",
     "pages/moveassess/assemble",
     "pages/moveassess/carry",
     "pages/moveassess/floor",
