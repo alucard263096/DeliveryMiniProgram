@@ -1,18 +1,48 @@
 // pages/member/member.js
+
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    wechat:"",
+    photo:"",
+    name:"",
+    mobile:"",
+    member_id:"",
+    isvalidated:false
   },
-
+  goOrderList:function(){
+      wx.navigateTo({
+        url: '../order/list',
+      })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this;
+    app.loginInfoReadyCallback = res => {
+      console.log(app.globalData);
+      that.setData({
+        member_id: app.globalData.member_id,
+        photo: app.globalData.photo,
+        name: app.globalData.name,
+        mobile: app.globalData.mobile
+      });
+    };
+    if(app.globalData.openid!=""){
+      that.setData({
+        member_id: app.globalData.member_id,
+        photo: app.globalData.photo,
+        name: app.globalData.name,
+        mobile: app.globalData.mobile
+      });
+    }
+
   },
 
   /**
@@ -26,7 +56,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    if (app.globalData.openid != "") {
+      this.setData({
+        member_id: app.globalData.member_id,
+        photo: app.globalData.photo,
+        name: app.globalData.name,
+        mobile: app.globalData.mobile
+      });
+    }
   },
 
   /**

@@ -84,6 +84,32 @@ class MemberApi
                     }
                   })
                 };
+   //授权登录
+                oauthlogin(request_json,callback, showLoading = true){
+					apiconfig.ShowLoading();
+                  wx.request({
+                    url: apiconfig.ServerUrl+'/member/oauthlogin', 
+                    data:request_json,
+                    method:'POST',
+                    dataType:'json',
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    success: function (res) {
+                      if(callback!=null){
+                        callback(res.data);
+                      }
+                    },
+                    fail:function(res){
+                      console.log(res);
+                      callback(false);
+                    },
+                    complete:function(res){
+                      console.log(res);
+                      apiconfig.CloseLoading();
+                    }
+                  })
+                };
    //授权注册
                 oauthregister(request_json,callback, showLoading = true){
 					apiconfig.ShowLoading();
@@ -136,11 +162,11 @@ class MemberApi
                     }
                   })
                 };
-   //授权登录
-                oauthlogin(request_json,callback, showLoading = true){
+   //获取二维码，方便加好友
+                qrcode(request_json,callback, showLoading = true){
 					apiconfig.ShowLoading();
                   wx.request({
-                    url: apiconfig.ServerUrl+'/member/oauthlogin', 
+                    url: apiconfig.ServerUrl+'/member/qrcode', 
                     data:request_json,
                     method:'POST',
                     dataType:'json',

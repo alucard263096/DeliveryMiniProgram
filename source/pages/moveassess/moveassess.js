@@ -34,12 +34,16 @@ Page({
     time:"",
     timetotalamount:0,
 
-    totalamount:0
+    totalamount:0,
+    remark:""
   },
   callOffice:function(){
     wx.makePhoneCall({
       phoneNumber: '4007008942' 
     })
+  },
+  remarkchange:function(e){
+    this.setData({"remark":e.detail.value});
   },
   selecttruck:function(){
 

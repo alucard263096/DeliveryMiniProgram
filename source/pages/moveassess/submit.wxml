@@ -1,8 +1,9 @@
 <!--pages/moveassess/submit.wxml-->
+<view style="position:absolute;left:0;top:0;width:100%;" class='{{success?"success":""}}'>
 <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">
 {{showTopTips}}
 </view>
-  <view class="block " style='background:white;padding-top:2vh;padding-left:4vh;padding-right:4vh;font-size:70%;' >
+  <view class="block " style='background:white;padding-top:2vh;padding-left:4vh;padding-right:4vh;font-size:70%;'  >
     <view class='flex-row'  >
       <text style='flex:1;color:#cccccc;'>预约日期：</text>
       <picker class='flex-3' style='background:#f2f2f2;padding:0.5vh;' mode="date" value="{{date}}" start="{{startdate}}" end="{{enddate}}" bindchange="bindDateChange">
@@ -35,6 +36,32 @@
     </view>
   </view>
 
-<view class="flex-row" style='margin-top:6vh;margin-left:15vh;margin-right:15vh;'>
+<view class="flex-row" style='margin-top:6vh;margin-left:15vh;margin-right:15vh;' >
   <button class="weui-btn flex-1" type="primary" bindtap="submit" style='margin-top:0.3vh;margin-right:1vh;'>预约</button>
+</view>
+
+</view>
+
+<view  wx:if="{{success==true}}" style='position:absolute;left:0;top:0;width:100%;height:100%;background:#000000;opacity:0.3;' bindtap='gosuccess'>
+
+</view>
+<view  wx:if="{{success==true}}" style='position:absolute;left:10%;top:30vh;z-index:1;100%;width:70%;background:white;border-radius:10px;padding:3vh;' bindtap='gosuccess'>
+<view class='text-center font-90'>
+恭喜你获得
+</view>
+<view style='background:url(../../images/coupon.png) no-repeat;background-size:100%;height:15vh;color:white;padding-top:3vh;' class='text-center'>
+  <text>￥</text>
+  <text style='font-size:8vh;'>20</text>
+  <text class='font-60'>满200元使用</text>
+</view>
+
+<view class='font-75 no-margin light' style='margin-top:1vh;'>
+  有效期至：{{enddate}}
+</view>
+<view class='font-75 no-margin light'  style='margin-top:1.5vh;'>
+  限于线上支付的订单,系统自动计算
+</view>
+<view class='font-75 no-margin light' style='margin-top:1.5vh;'>
+  不兑现，不可叠加使用
+</view>
 </view>

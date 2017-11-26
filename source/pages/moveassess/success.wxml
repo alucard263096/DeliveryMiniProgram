@@ -1,0 +1,14 @@
+<!--pages/moveassess/success.wxml-->
+<view class='text-center' style='margin-top:20vh;'>
+  <view>
+  <image src="../../images/icons/check_active.png" style='width:15vh;height:15vh;margin:3px;' />
+  </view>
+  <text style='padding-bottom:-20vh;font-size:140%;'>预约成功</text>
+  <view class='font-60 text-center' style='margin-top:10vh;'>
+    <text>* 该报价为预报价，以现场确认价格为准</text>
+  </view>
+
+  <view class="flex-row" style='margin-top:6vh;margin-left:15vh;margin-right:15vh;'>
+    <button class="weui-btn flex-1" type="primary" bindtap="ok" style='margin-top:0.3vh;margin-right:1vh;'>确定</button>
+  </view>
+</view>

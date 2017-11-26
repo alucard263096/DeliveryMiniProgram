@@ -19,7 +19,9 @@ Page({
     reminderResend:0,
     mobile:"",
     verifycode:"",
-    showTopTips:""
+    showTopTips:"",
+    redirectpage:"",
+    istab:""
   }, 
   submitRegister: function () {
 
@@ -181,11 +183,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this;
+    var redirectpage=options.redirectpage;
+    if (redirectpage==undefined){
+      redirectpage="../move/move";
+    }
+    this.setData({ redirectpage: redirectpage});
 
+    var that = this;
     app.loginInfoReadyCallback=res=>{
-      that.oauthlogin();;
+      that.oauthlogin();
     };
+
+    setTimeout(function(){
+      that.oauthlogin();
+    },3000);
 
 
     if (app.globalData.userInfo) {
@@ -230,9 +241,14 @@ Page({
       oauthtype: "MINI",
       oauthunionid: app.globalData.openid}, function (data) {
       if(data.code==0){
-        console.log("??redirectTo");
+        console.log("??redirectTo:" + that.data.redirectpage);
+        data = data.return; 
+        app.globalData.member_id = data.id;
+        app.globalData.mobile = data.mobile;
+        app.globalData.name = data.name;
+        app.globalData.photo = data.photo;
         wx.switchTab({
-          url: '../move/move'
+          url: that.data.redirectpage
         });
       }else{
         that.setData({ showSplash:false});

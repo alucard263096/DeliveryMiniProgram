@@ -1,17 +1,20 @@
 {
   "pages": [
-    "pages/moveassess/moveassess",
+    "pages/order/list",
+    "pages/order/detail",
+    "pages/member/member",
+    "pages/signup/signup",
     "pages/moveassess/submit",
+    "pages/moveassess/success",
+    "pages/moveassess/moveassess",
     "pages/moveassess/assemble",
     "pages/moveassess/carry",
     "pages/moveassess/floor",
     "pages/moveassess/truck",
-    "pages/signup/signup",
     "pages/move/move",
     "pages/index/index",
     "pages/logs/logs",
     "pages/delivery/delivery",
-    "pages/member/member",
     "pages/moveassess/bigstuff",
     "pages/moveassess/specialstuff",
     "pages/moveassess/time"

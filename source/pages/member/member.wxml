@@ -1,2 +1,80 @@
 <!--pages/member/member.wxml-->
-<text>pages/member/member.wxml</text>
+<view class='white flex-row' style='padding:1vh;'>
+  <view class='flex-1 text-center' style='padding-top:1vh;'>
+    <image src='{{photo}}' style='width:23vw;height:23vw;'></image>
+  </view>
+  <view class='flex-2' style='padding-left:0.5vh;'>
+    <view class='no-margin' style='margin-top:0vh;'>
+      <text class='font-75' style='font-weight:bold;'>{{name}}</text>
+    </view>
+    <view class='no-margin' style='margin-top:0vh;min-height:10vh'>
+      <text class='font-60' wx:if="wechat!=''">微信号：{{wechat}}</text>
+      <text class='font-60'>手机号码：{{mobile}}</text>
+    </view>
+  </view>
+  <view class='flex-1'>
+  <view class='flex-1 text-center' style='padding-top:1vh;'>
+    <image src='http://cmsdev.app-link.org/alucard263096/lights/api/member/qrcode?member_id={{member_id}}' style='width:23vw;height:23vw;'></image>
+  </view>
+  </view>
+</view>
+
+<view class='white' style='margin-top:2vh;'>
+  <view class='font-90' style='padding:2vh;border-bottom:1px solid #cccccc'>
+    <text>我的订单</text>
+  </view>
+  <view class='flex-row' style='padding:3vh;'>
+    <view class='flex-1 text-center' style='border-right:1px solid #cccccc' bindtap='goOrderList'>
+      <view>
+        <image src='../../images/icons/order.png'  style='width:5vh;height:5vh;'></image>
+      </view>
+      <text class='font-85'>预约</text>
+    </view>
+    <view class='flex-1  text-center'>
+      <view>
+        <image src='../../images/icons/comment.png'  style='width:5vh;height:5vh;'></image>
+      </view>
+      <text class='font-85'>待评价</text>
+    </view>
+  </view>
+</view>
+
+
+<view class='white' style='margin-top:2vh;'>
+  <view class='font-90' style='padding:2vh;border-bottom:1px solid #cccccc'>
+    <text>合作伙伴</text>
+  </view>
+  <view class='flex-row' style='padding:3vh;'>
+    <view class='flex-1 text-center' style='border-right:1px solid #cccccc'>
+      <view wx:if="{{isvalidated==true}}">
+        <image src='../../images/icons/validated.png'  style='width:5vh;height:5vh;'></image>
+      </view>
+      <text class='font-85'  wx:if="{{isvalidated==true}}">认证通过</text>
+      <button  wx:if="{{isvalidated==false}}" bindtap='govalidate' style='margin:2vh;'>未认证</button>
+    </view>
+    <view class='flex-1  text-center'style='border-right:1px solid #cccccc'>
+      <view>
+        <image src='../../images/icons/query.png'  style='width:5vh;height:5vh;'></image>
+      </view>
+      <text class='font-85'>订单查询</text>
+    </view><view class='flex-1  text-center'>
+      <view>
+        <image src='../../images/icons/money.png'  style='width:5vh;height:5vh;'></image>
+      </view>
+      <text class='font-85'>我的收益</text>
+    </view>
+  </view>
+</view>
+
+<view class='white' style='margin-top:2vh;'>
+  <view class='font-90' style='padding:2vh;border-bottom:1px solid #cccccc'>
+    <text>我的卡券</text>
+  </view>
+</view>
+
+
+<view class='white' style='margin-top:2vh;margin-bottom:2vh'>
+  <view class='font-90' style='padding:2vh;border-bottom:1px solid #cccccc'>
+    <text>关于我们</text>
+  </view>
+</view>

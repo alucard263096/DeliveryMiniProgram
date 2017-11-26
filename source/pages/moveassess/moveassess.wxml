@@ -223,7 +223,7 @@
 
   <view class='flex-row' style='background:white;margin-top:1vh;padding:2vh;font-size:70%;'>
     <text style='flex:1;'>备注：</text>
-    <textarea placeholder='请补充相关备注' style='flex:6;background:#F2F2F2;padding:1vh;height:13vh;' maxlength='255'></textarea>
+    <textarea placeholder='请补充相关备注' bindinput='remarkchange' style='flex:6;background:#F2F2F2;padding:1vh;height:13vh;' maxlength='255'>{{remark}}</textarea>
   </view>
 
 

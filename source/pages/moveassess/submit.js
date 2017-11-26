@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    success:false,
     startdate:"",
     enddate:"",
     date:"",
@@ -35,7 +36,15 @@ Page({
       case "contactnumber2": this.setData({ contactnumber2: e.detail.value }); return;
     }
   },
+  gosuccess(){
+    wx.redirectTo({
+      url: 'success',
+    });
+  },
   submit:function(){
+    if(this.data.success){
+      return;
+    }
     if (this.data.contactname == "" || this.data.contactnumber==""){
       this.setData({ showTopTips:"请正确填写联系人和联系电话"});
       return;
@@ -48,13 +57,23 @@ Page({
     data.contactname2 = this.data.contactname2;
     data.contactnumber2 = this.data.contactnumber2;
     data.contactnumber2 = this.data.contactnumber2;
+
+    data.trucktype = JSON.stringify(data.trucktype);
+    data.assembleoptions = JSON.stringify(data.assembleoptions);
+    data.bigstuffoptions = JSON.stringify(data.bigstuffoptions);
+    data.specialstuffoptions = JSON.stringify(data.specialstuffoptions);
+
     data.openid = app.globalData.openid;
     console.log(this.moveassessApi);
+    var that=this;
     moveassessApi.update(data, function (ret){
-      if(ret.data==0){
-
+      if(ret.code==0){
+        that.setData({success:true});
       }else{
-        
+        wx.showModal({
+          title: '错误',
+          content: '未知错误，请联系管理员',
+        })
       }
     });
 

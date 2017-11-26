@@ -20,12 +20,31 @@ App({
         var wechatApi=new WechatApi();
         wechatApi.decryption({ code: res.code, grant_type: "authorization_code" }, function (data) {
           data = JSON.parse(data);
-          console.log(data);
           that.globalData.openid = data.openid;
           that.globalData.session_key = data.session_key;
-          if (that.loginInfoReadyCallback){
-            that.loginInfoReadyCallback(data);
-          }
+          
+            var MemberApi = require('/apis/member.js');
+            var memberApi=new MemberApi();
+            memberApi.oauthlogin({
+              oauthtype: "MINI",
+              oauthunionid: that.globalData.openid
+            }, function (ret) {
+              if (ret.code == 0) {
+                ret = ret.return;
+                console.log(ret);
+                that.globalData.member_id = ret.id;
+                that.globalData.mobile = ret.mobile;
+                that.globalData.name = ret.name;
+                that.globalData.photo = ret.photo;
+              }else{
+                wx.redirectTo({
+                  url: '../../pages/signup/signup'
+                });
+              }
+              if (that.loginInfoReadyCallback) {
+                that.loginInfoReadyCallback(data);
+              }
+            });
           wx.getUserInfo({
             success: function (res) {
               var userInfo = res.userInfo
@@ -70,6 +89,10 @@ App({
     // })
   },
   globalData: {
+    member_id: "",
+    mobile: "",
+    name: "",
+    photo: "",
     openid: "",
     session_key: "",
     userInfo: null

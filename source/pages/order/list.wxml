@@ -1,0 +1,29 @@
+<!--pages/order/list.wxml-->
+<block wx:for-items="{{list}}" wx:key="{{index}}">
+<view class='white font-75 flex-row' style='margin-top:1vh;padding:2vh;'>
+  <view class='flex-4'>
+    <view>
+    <text>订单号：</text>
+    <text class='light'>{{item.orderno}}</text>
+    </view>
+    <view style='margin-top:0.3vh'>
+    <text>预约时间：</text>
+    <text class='light'>{{item.orderdatetime}}</text>
+    </view>
+    <view  style='margin-top:0.3vh'>
+    <text>报价评估：</text>
+    <text class='light'>{{item.totalamount}}元</text>
+    <text style='color:#FFCE3B;margin-left:3vh;text-decoration:underline'>详情</text>
+    </view>
+  </view>
+  <view class='flex-1 font-120' style='padding:4vh;' >
+  {{item.status=="C"?"已取消":""}}
+  {{item.status=="A"?"未受理":""}}
+  {{item.status=="P"?"受理中":""}}
+  {{item.status=="H"?"已受理":""}}
+  {{item.status=="PC"?"支付确认中":""}}
+  {{item.status=="PW"?"支付完成":""}}
+  {{item.status=="S"?"服务完成":""}}
+  </view>
+</view>
+</block>
