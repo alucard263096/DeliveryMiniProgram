@@ -2,6 +2,9 @@
 const app=getApp();
 var MoveassessApi=require('../../apis/moveassess.js');
 var moveassessApi=new MoveassessApi();
+
+var utils = require('../../utils/util.js')
+
 Page({
 
   /**
@@ -10,7 +13,12 @@ Page({
   data: {
       list:[]
   },
-
+  goDetail(e){
+    var id = e.currentTarget.id;
+    wx.navigateTo({
+      url: 'detail?id='+id,
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -25,7 +33,11 @@ Page({
   },
   loadOrderList(member_id){
     var that=this;
-    moveassessApi.list({ member_id: member_id,"orderby":"orderdatetime desc"},function(data){
+    moveassessApi.list({ member_id: member_id ,"orderby":"orderdatetime desc"},function(data){
+      for(var i=0;i<data.length;i++){
+        var date=new Date(data[i].orderdatetime);
+        data[i].orderdatetime = utils.formatTime2(date);
+      }
       that.setData({list:data});
     });
   },

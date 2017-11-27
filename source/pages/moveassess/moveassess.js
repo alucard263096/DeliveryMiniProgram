@@ -1,10 +1,14 @@
 // pages/moveassess/moveassess.js
+var MoveassessApi = require('../../apis/moveassess.js');
+var moveassessApi = new MoveassessApi();
+var utils = require('../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    id:0,
     trucktype:[],
     distance:0,
     moveamount:0,
@@ -57,7 +61,7 @@ Page({
       + "&distance=" + this.data.distance.toString()
       + "&moveamount=" + this.data.moveamount.toString()
       + "&endposition=" + this.data.endposition.toString()
-      + "&startposition=" + this.data.startposition.toString(),
+      + "&startposition=" + this.data.startposition.toString()+"&id="+this.data.id.toString(),
     })
   },
   selectassemble: function () {
@@ -68,7 +72,7 @@ Page({
     //       endposition:"",
     //         startposition: "",
     wx.navigateTo({
-      url: 'assemble?options=' + JSON.stringify(this.data.assembleoptions)
+      url: 'assemble?options=' + JSON.stringify(this.data.assembleoptions) + "&id=" + this.data.id.toString()
     })
   },
   selectbigstuff: function () {
@@ -79,7 +83,7 @@ Page({
     //       endposition:"",
     //         startposition: "",
     wx.navigateTo({
-      url: 'bigstuff?options=' + JSON.stringify(this.data.bigstuffoptions)
+      url: 'bigstuff?options=' + JSON.stringify(this.data.bigstuffoptions) + "&id=" + this.data.id.toString()
     })
   },
   selectspecialstuff: function () {
@@ -90,7 +94,7 @@ Page({
     //       endposition:"",
     //         startposition: "",
     wx.navigateTo({
-      url: 'specialstuff?options=' + JSON.stringify(this.data.specialstuffoptions)
+      url: 'specialstuff?options=' + JSON.stringify(this.data.specialstuffoptions) + "&id=" + this.data.id.toString()
     })
   },
   selecttime: function () {
@@ -101,7 +105,7 @@ Page({
     //       endposition:"",
     //         startposition: "",
     wx.navigateTo({
-      url: 'time?time=' + this.data.time
+      url: 'time?time=' + this.data.time + "&id=" + this.data.id.toString()
     })
   },
   selectfloor: function () {
@@ -120,7 +124,7 @@ Page({
                 + "&moveouttype=" + this.data.moveouttype
                 + "&moveintotalamount=" + this.data.moveintotalamount.toString()
                 + "&moveinfloornumber=" + (this.data.moveinfloornumber == null ? 0 : this.data.moveinfloornumber).toString()
-                + "&moveintype=" + this.data.moveintype
+                + "&moveintype=" + this.data.moveintype + "&id=" + this.data.id.toString()
     })
   },
   selectcarry: function () {
@@ -129,7 +133,7 @@ Page({
       + "?carryouttotalamount=" + this.data.carryouttotalamount.toString()
       + "&carryouttype=" + this.data.carryouttype
       + "&carryintotalamount=" + this.data.carryintotalamount.toString()
-      + "&carryintype=" + this.data.carryintype
+      + "&carryintype=" + this.data.carryintype + "&id=" + this.data.id.toString()
     })
   },
   truckselectedcallback:function(data){
@@ -237,7 +241,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that=this;
+    if(options.id!=undefined){
+      
+      moveassessApi._get(options.id,function(data){
+        data.trucktype = JSON.parse(utils.htmlDecode(data.trucktype));
+        data.assembleoptions = JSON.parse(utils.htmlDecode(data.assembleoptions));
+        data.bigstuffoptions = JSON.parse(utils.htmlDecode(data.bigstuffoptions));
+        data.specialstuffoptions = JSON.parse(utils.htmlDecode(data.specialstuffoptions));
+        that.setData(data);
+      });
+    }
   },
 
   /**

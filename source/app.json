@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/order/list",
     "pages/order/detail",
+    "pages/order/list",
     "pages/member/member",
     "pages/signup/signup",
     "pages/moveassess/submit",

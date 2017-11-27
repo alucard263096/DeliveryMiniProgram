@@ -74,7 +74,7 @@
       以实际地图测算为准，超过10公里，按照10元/公里。车，300公里以上9折，500公里以上8折；其中4.2米货车早晚高峰期限行。
     </view>
   </view>
-  <view class="flex-row" style='margin:2vh;'>
+  <view class="flex-row" style='margin:2vh;' wx:if="{{id==0}}">
   <button class="weui-btn flex-1  font-75" type="primary" bindtap="cancel" style='margin-top:0.3vh;margin-right:1vh;'>取消</button>
   <button class="weui-btn flex-1  font-75" type="primary" bindtap="submit" style='margin-top:0.3vh;margin-left:1vh;'>确定</button>
   </view>

@@ -1,2 +1,72 @@
 <!--pages/order/detail.wxml-->
-<text>pages/order/detail.wxml</text>
+<view style='padding:2vh;padding-left:4vh;padding-bottom:0vh;' class='font-90'>
+  <text>订单详情</text>
+</view>
+<view class='white block block-radius font-75' style='color:black;padding-left:3vh;padding-right:3vh'>
+  <view class='flex-row'>
+    <view class='flex-3'>
+    
+  <view style="margin-top:0.5vh">
+    <text>订单号：</text><text class='light'>{{orderno}}</text>
+  </view>
+  <view style="margin-top:0.5vh">
+    <text>订单状态：</text><text class='primary'>{{status=="C"?"已取消":""}}{{status=="A"?"未受理":""}}{{status=="W"?"受理中":""}}{{status=="O"?"已受理":""}}{{status=="OF"?"已受理":""}}{{status=="P"?"支付确认中":""}}{{status=="PS"?"支付完成":""}}{{status=="S"?"服务完成":""}}</text>
+  </view>
+  <view wx:if="{{paymenttype=='ON'||paymenttype=='OFF'}}" style="margin-top:0.5vh">
+    <text>支付方式：</text><text class='light'>{{paymenttype=="ON"?"线上支付":""}}{{status=="OFF"?"线下支付":""}}</text>
+  </view>
+  <view style="margin-top:0.5vh">
+    <text>报价评估：</text><text class='light'>{{assessamount}}元</text>
+  </view>
+  <view wx:if="{{paymentamount>0}}" style="margin-top:0.5vh">
+    <text>实际支付：</text><text class='light'>{{paymentamount}}元</text>
+  </view>
+  <view style="margin-top:0.5vh" class='font-90 light'>
+    <text>订单生成时间：</text><text >{{orderdatetime}}</text>
+  </view>
+  <view style="margin-top:0.5vh" class='font-90 light' wx:if="{{accepted_year>1970}}">
+    <text>订单受理时间：</text><text >{{accepted_date}}</text>
+  </view>
+  <view style="margin-top:0.5vh" class='font-90 light'  wx:if="{{paied_year>1970}}">
+    <text>订单支付时间：</text><text >{{paied_date}}</text>
+  </view>
+
+    </view>
+    <view class='flex-1 font-90'>
+      <view style='margin-top:1vh;' bindtap='goMoveassess'>
+        <text style='color:#FFCE3B;margin-left:3vh;text-decoration:underline'>估价详情></text>
+      </view>
+      <view style='margin-top:1vh;' wx:if="{{status=='S'}}" bindtap='goComment'>
+        <text style='color:#FFCE3B;margin-left:3vh;text-decoration:underline'>评价详情></text>
+      </view>
+      <view style='margin-top:1vh;' wx:if="{{status=='PS'}}" bindtap='goComment'>
+        <text class="primary" style='margin-left:3vh;text-decoration:underline'>立即评价></text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view style='padding:2vh;padding-left:4vh;padding-bottom:0vh;' class='font-90'>
+  <text>预约详情</text>
+</view>
+
+<view class='white block block-radius font-75' style='color:black;padding-left:3vh;padding-right:3vh'>
+  <view style="margin-top:0.5vh">
+    <text>预约时间：</text><text class='light'>{{orderdatetime}}</text>
+  </view>
+  <view style="margin-top:0.5vh">
+    <text>备注：</text><text class='light'>{{remark}}</text>
+  </view>
+  <view style="margin-top:0.5vh">
+    <text>联系人：</text><text class='light'>{{contactname}}</text>
+  </view>
+  <view style="margin-top:0.5vh">
+    <text>联系电话：</text><text class='light'>{{contactnumber}}</text>
+  </view>
+  <view style="margin-top:0.5vh">
+    <text>联系人2：</text><text class='light'>{{contactname2}}</text>
+  </view>
+  <view style="margin-top:0.5vh">
+    <text>联系电话2：</text><text class='light'>{{contactnumber2}}</text>
+  </view>
+</view>

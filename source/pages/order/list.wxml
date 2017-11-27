@@ -1,8 +1,8 @@
 <!--pages/order/list.wxml-->
 <block wx:for-items="{{list}}" wx:key="{{index}}">
-<view class='white font-75 flex-row' style='margin-top:1vh;padding:2vh;'>
+<view class='white font-75 flex-row' style='margin-top:1vh;padding:2vh;'  bindtap='goDetail' id='{{item.id}}'>
   <view class='flex-4'>
-    <view>
+    <view >
     <text>订单号：</text>
     <text class='light'>{{item.orderno}}</text>
     </view>
@@ -16,14 +16,18 @@
     <text style='color:#FFCE3B;margin-left:3vh;text-decoration:underline'>详情</text>
     </view>
   </view>
-  <view class='flex-1 font-120' style='padding:4vh;' >
+  <view class='flex-1 font-120 text-center' style='padding-top:2.5vh;' >
   {{item.status=="C"?"已取消":""}}
   {{item.status=="A"?"未受理":""}}
-  {{item.status=="P"?"受理中":""}}
-  {{item.status=="H"?"已受理":""}}
-  {{item.status=="PC"?"支付确认中":""}}
-  {{item.status=="PW"?"支付完成":""}}
+  {{item.status=="W"?"受理中":""}}
+  {{item.status=="O"?"已受理":""}}
+  {{item.status=="OF"?"已受理":""}}
+  {{item.status=="P"?"支付确认中":""}}
+  {{item.status=="PS"?"支付完成":""}}
   {{item.status=="S"?"服务完成":""}}
+  <button style='font-size:2vh;padding:0px;line-height:3vh' type="primary" wx:if="{{item.status=='A'}}">
+    取消预约
+  </button>
   </view>
 </view>
 </block>

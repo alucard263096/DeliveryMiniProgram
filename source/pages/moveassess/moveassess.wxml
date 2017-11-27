@@ -3,14 +3,14 @@
 {{showTopTips}}
 </view>
 <view>
-  <view class="block block-radius" style='background:#FBB848' >
+  <view class="block block-radius" style='background:#FBB848' wx:if="{{id==0}}" >
     <view class='flex-row' style='font-size:80%;' bindtap='callOffice'>
       <image  src="../../images/icons/telphone.png" style='height:3.5vh;width:3.5vh' />
       <text style='margin-left:2vh;'>人工报价</text>
       <text style='width:37vh;text-align:right;'>400-700-8942</text>
     </view>
   </view>
-  <view class="block block-radius" style='background:#53C8E6' >
+  <view class="block block-radius" style='background:#53C8E6'  wx:if="{{id==0}}">
     <view class='flex-row' style='font-size:80%;' >
       <image  src="../../images/icons/offer.png" style='height:3vh;width:3vh' />
       <text style='margin-left:2vh;'>自助报价</text>
@@ -228,9 +228,9 @@
 
 
 
-  <view style='background:white;padding-left:10vh;padding-right:10vh;margin-top:2vh;padding-top:4vh;padding-bottom:4vh;'>
+  <view style='background:white;padding-left:10vh;padding-right:10vh;margin-top:2vh;padding-top:4vh;padding-bottom:4vh;'  wx:if="{{id==0}}">
       <image src="../../images/icons/speaker.png" style='height:2vh;width:2.1vh;padding-top:0.4vh;' /><text style='font-size:1.8vh;margin-left:0.7vh;' class="primary">填写预约信息并成功注册，可获得搬家优惠券！</text>
-     <button class="weui-btn" type="primary" bindtap="submitRegister" style='margin-top:0.3vh;'>一键预约</button>
+     <button class="weui-btn" type="primary" bindtap="submitRegister" style='margin-top:0.3vh;' >一键预约</button>
   </view>
 
   <view style='padding:2vh;padding-bottom:4vh;font-size:1.8vh;color:#aaa;'>
