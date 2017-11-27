@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/moveassess/truck",
+    "pages/moveassess/position",
     "pages/order/detail",
     "pages/order/list",
     "pages/member/member",
@@ -10,7 +12,6 @@
     "pages/moveassess/assemble",
     "pages/moveassess/carry",
     "pages/moveassess/floor",
-    "pages/moveassess/truck",
     "pages/move/move",
     "pages/index/index",
     "pages/logs/logs",

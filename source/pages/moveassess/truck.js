@@ -1,5 +1,5 @@
 // pages/moveassess/truck.js
-
+const app=getApp();
 var TrucktypeApi=require('../../apis/trucktype.js');
 var trucktypeApi=new TrucktypeApi();
 var APIConfig = require('../../ApiConfig.js');
@@ -12,12 +12,85 @@ Page({
    */
   data: {
     id: 0,
-    distance:32.5,
+    distance:0,
     totalamount:0,
-    startposition: "深圳市南山区沛鸿大厦",
-    endposition: "深圳市福田区招商银行大厦",
+    startposition: "",
+    startposition_lat:0,
+    startposition_lng:0,
+    endposition: "",
+    endposition_lat: 0,
+    endposition_lng: 0,
     trucktype:[],
     uploadpath:""
+  },
+  selectlocation(e){
+    var returntype=e.target.id;
+    var address="";
+    if(returntype=="start"){
+      address = this.data.startposition;
+    }else{
+      address = this.data.endposition;
+    }
+    wx.navigateTo({
+      url: 'position?returntype='+returntype+"&address="+address,
+    });
+  },
+  startpositioncallback(address){
+
+    this.setData({ distance: 0 });
+    console.log(address);
+    this.setData({
+      startposition: address.address + address.title,
+      startposition_lat: address.location.lat,
+      startposition_lng: address.location.lng
+    });
+    if (this.data.endposition!=""){
+      this.countdistance();
+    }
+  },
+  endpositioncallback(address) {
+
+    this.setData({ distance: 0 });
+    console.log(address);
+    this.setData({
+      endposition: address.address + address.title,
+      endposition_lat: address.location.lat,
+      endposition_lng: address.location.lng
+    });
+    if (this.data.startposition != "") {
+      this.countdistance();
+    }
+  },
+  countdistance(){
+    var that=this;
+    app.qqmapsdk.calculateDistance({
+      mode:"driving",
+      to: [{
+        latitude: this.data.startposition_lat,
+        longitude: this.data.startposition_lng
+      }, {
+          latitude: this.data.endposition_lat,
+          longitude: this.data.startposition_lng
+      }],
+      success: function (res) {
+        console.log(res);
+        if(res.result.elements.length>0){
+          var distance = (res.result.elements[0].distance / 1000.0).toFixed(2);
+          that.setData({ distance: distance});
+          that.calculateAmount(0, 0);
+        } else {
+          that.setData({ distance: 0 });
+          that.setData({ showTopTips: "获取不了距离，请重新选择起点和终点" });
+          that.calculateAmount(0, 0);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+      },
+      complete: function (res) {
+        console.log(res);
+      }
+    });
   },
   cancel:function(e){
       wx.navigateBack({
@@ -101,41 +174,40 @@ Page({
     this.setData({id:options.id});
     var that=this;
     that.setData({ uploadpath: apiconfig.UploadFolderUrl });
-
-    var trucktype = JSON.parse(options.trucktype);
-    var distance = options.distance;
-    var moveamount = options.moveamount;
-    var endposition = options.endposition;
-    var startposition = options.startposition;
-
-    if(distance==0){
-      distance=32.5;
-    }
-    if (endposition == "") {
-      endposition = "深圳市福田区招商银行大厦";
-    }
-    if (startposition == "") {
-      startposition = "深圳市南山区沛鸿大厦";
-    }
-
-    this.setData({
-      trucktype: trucktype,
-      distance: distance,
-      moveamount: moveamount,
-      endposition: endposition,
-      startposition: startposition
-    });
-    if(trucktype.length==0){
-      trucktypeApi.list({"orderby":"seq","status":"A"},function(data){
+    if (options.trucktype!=undefined){
+      var trucktype = JSON.parse(options.trucktype);
+      var distance = options.distance;
+      var moveamount = options.moveamount;
+      var endposition = options.endposition;
+      var startposition = options.startposition;
+      this.setData({
+        trucktype: trucktype,
+        distance: distance,
+        moveamount: moveamount,
+        endposition: endposition,
+        startposition: startposition
+      });
+      this.calculateAmount();
+    }else{
+      trucktypeApi.list({ "orderby": "seq", "status": "A" }, function (data) {
         for (var i = 0; i < data.length; i++) {
           data[i].qty = 0;
           data[i].amount = 0;
         }
-          that.setData({ trucktype:data});
+        that.setData({ trucktype: data });
       });
-    }else{
-      this.calculateAmount();
     }
+
+    // if(distance==0){
+    //   distance=32.5;
+    // }
+    // if (endposition == "") {
+    //   endposition = "深圳市福田区招商银行大厦";
+    // }
+    // if (startposition == "") {
+    //   startposition = "深圳市南山区沛鸿大厦";
+    // }
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

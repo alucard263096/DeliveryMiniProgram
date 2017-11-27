@@ -46,11 +46,11 @@
 
 
   <view style='background:white;margin-top:1vh;margin-right:2vh;margin-left:2vh;padding:3vh;'>
-    <view class='flex-row font-60' style='border-bottom:solid 1px #f2f2f2;padding-bottom:2vh;'  >
+    <view class='flex-row font-60' style='border-bottom:solid 1px #f2f2f2;padding-bottom:2vh;' bindtap='selectlocation' id="start" >
       <text style='margin-top:0.9vh;'>起</text>
       <text style='margin-top:0.9vh;margin-left:4vh;'>{{startposition}}</text>
     </view>
-    <view class='flex-row font-60' style='border-bottom:solid 1px #f2f2f2;padding-bottom:2vh;padding-top:1vh;'  >
+    <view class='flex-row font-60' style='border-bottom:solid 1px #f2f2f2;padding-bottom:2vh;padding-top:1vh;' bindtap='selectlocation'  id="end" >
       <text style='margin-top:0.9vh;'>终</text>
       <text style='margin-top:0.9vh;margin-left:4vh;'>{{endposition}}</text>
     </view>

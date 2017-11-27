@@ -39,7 +39,9 @@ Page({
   onLoad: function (options) {
     var id=options.id;
     console.log(id);
-    id=5;
+    if (id == undefined) {
+      id = 5;
+    }
     var that=this;
     moveassessApi._get(id,function(data){
       that.setData({

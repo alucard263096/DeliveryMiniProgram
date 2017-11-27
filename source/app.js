@@ -2,6 +2,14 @@
 App({
   onLaunch: function () {
     // 展示本地存储能力
+
+    var QQMapWX = require('libs/qqmap/qqmap-wx-jssdk.js');
+
+    this.qqmapsdk = new QQMapWX({
+      key: 'IDVBZ-TSAKD-TXG43-H442I-74KVK-6LFF5'
+    });
+
+
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs);
@@ -97,5 +105,6 @@ App({
     session_key: "",
     userInfo: null
   },
+  qqmapsdk: null,
   apiconfig: null
 })
