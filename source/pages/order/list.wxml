@@ -1,7 +1,7 @@
 <!--pages/order/list.wxml-->
 <block wx:for-items="{{list}}" wx:key="{{index}}">
-<view class='white font-75 flex-row' style='margin-top:1vh;padding:2vh;'  bindtap='goDetail' id='{{item.id}}'>
-  <view class='flex-4'>
+<view class='white font-75 flex-row' style='margin-top:1vh;padding:2vh;'>
+  <view class='flex-4'   bindtap='goDetail' id='{{item.id}}'>
     <view >
     <text>订单号：</text>
     <text class='light'>{{item.orderno}}</text>
@@ -25,8 +25,12 @@
   {{item.status=="P"?"支付确认中":""}}
   {{item.status=="PS"?"支付完成":""}}
   {{item.status=="S"?"服务完成":""}}
-  <button style='font-size:2vh;padding:0px;line-height:3vh' type="primary" wx:if="{{item.status=='A'}}">
+  <button style='font-size:2vh;padding:0px;line-height:3vh' type="primary" wx:if="{{item.status=='W'}}" bindtap='cancelorder'>
     取消预约
+  </button>
+  <text style='font-size:2vh;' class="primary" wx:if="{{item.status=='OF'}}">\n* 搬家后支付</text>
+  <button style='font-size:2vh;padding:0px;line-height:3vh' type="primary" wx:if="{{item.status=='OF'}}">
+    立即支付
   </button>
   </view>
 </view>

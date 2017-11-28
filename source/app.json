@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/member/member",
     "pages/moveassess/truck",
     "pages/moveassess/position",
     "pages/order/detail",
     "pages/order/list",
-    "pages/member/member",
     "pages/signup/signup",
     "pages/moveassess/submit",
     "pages/moveassess/success",

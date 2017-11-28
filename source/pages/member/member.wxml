@@ -7,8 +7,10 @@
     <view class='no-margin' style='margin-top:0vh;'>
       <text class='font-75' style='font-weight:bold;'>{{name}}</text>
     </view>
-    <view class='no-margin' style='margin-top:0vh;min-height:10vh'>
+    <view class='no-margin' style='margin-top:0vh;'wx:if="{{wechat!=''}}">
       <text class='font-60' wx:if="wechat!=''">微信号：{{wechat}}</text>
+    </view>
+    <view class='no-margin' style='margin-top:0vh;'>
       <text class='font-60'>手机号码：{{mobile}}</text>
     </view>
   </view>
