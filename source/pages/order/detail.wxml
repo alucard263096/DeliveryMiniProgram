@@ -24,6 +24,9 @@
   <view style="margin-top:0.5vh" class='font-90 light'>
     <text>订单生成时间：</text><text >{{orderdatetime}}</text>
   </view>
+  <view style="margin-top:0.5vh" class='font-90 light' wx:if="{{status=='C'}}">
+    <text>订单取消时间时间：</text><text >{{cancelled_date}}</text>
+  </view>
   <view style="margin-top:0.5vh" class='font-90 light' wx:if="{{accepted_year>1970}}">
     <text>订单受理时间：</text><text >{{accepted_date}}</text>
   </view>
@@ -36,11 +39,11 @@
       <view style='margin-top:1vh;' bindtap='goMoveassess'>
         <text style='color:#FFCE3B;margin-left:3vh;text-decoration:underline'>估价详情></text>
       </view>
-      <view style='margin-top:1vh;' wx:if="{{status=='S'}}" bindtap='goComment'>
+      <view style='margin-top:3vh;' wx:if="{{status=='S'}}" bindtap='goComment'>
         <text style='color:#FFCE3B;margin-left:3vh;text-decoration:underline'>评价详情></text>
       </view>
-      <view style='margin-top:1vh;' wx:if="{{status=='PS'}}" bindtap='goComment'>
-        <text class="primary" style='margin-left:3vh;text-decoration:underline'>立即评价></text>
+      <view style='margin-top:3vh;' wx:if="{{status=='PS'}}" bindtap='goComment'>
+        <text class="primary" style='margin-left:3vh;text-decoration:underline' >立即评价></text>
       </view>
     </view>
   </view>

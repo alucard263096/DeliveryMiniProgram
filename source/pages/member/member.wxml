@@ -32,7 +32,7 @@
       </view>
       <text class='font-85'>预约</text>
     </view>
-    <view class='flex-1  text-center'>
+    <view class='flex-1  text-center'  bindtap='goCommentList'>
       <view>
         <image src='../../images/icons/comment.png'  style='width:5vh;height:5vh;'></image>
       </view>

@@ -14,6 +14,11 @@ Page({
     mobile:"",
     member_id:"",
     isvalidated:false
+  }, 
+  goCommentList(){
+    wx.navigateTo({
+      url: '../order/commentlist',
+    })
   },
   goOrderList:function(){
       wx.navigateTo({

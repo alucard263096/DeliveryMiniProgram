@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/member/member",
+    "pages/order/comment",
+    "pages/order/payment",
     "pages/moveassess/truck",
     "pages/moveassess/position",
     "pages/order/detail",
@@ -18,7 +20,8 @@
     "pages/delivery/delivery",
     "pages/moveassess/bigstuff",
     "pages/moveassess/specialstuff",
-    "pages/moveassess/time"
+    "pages/moveassess/time",
+    "pages/order/commentlist"
   ],
   "window": {
     "backgroundTextStyle": "light",

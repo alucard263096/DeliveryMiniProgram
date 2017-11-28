@@ -28,6 +28,11 @@ Page({
     contactname2:"",
     contactnumber2:""
   },
+  goComment(e) {
+    wx.navigateTo({
+      url: 'comment?id=' + this.data.id,
+    });
+  },
   goMoveassess(){
     wx.navigateTo({
       url: '../moveassess/moveassess?id='+this.data.id,

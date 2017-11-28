@@ -1,0 +1,35 @@
+<!--pages/order/payment.wxml-->
+
+<view class='white block block-radius font-85' style='color:black;padding:0px;' >
+  <view class='flex-row'style='padding-top:2vh;padding-bottom:2vh;padding-left:2vh;border-bottom:1px solid #f2f2f2'>
+      <view class='flex-1'>
+        <image src="../../images/icons/moneypay.png" style='width:3vh;height:3vh;'></image>
+      </view>
+      <view class='flex-8'>
+        现场支付
+      </view>
+      <view class='flex-1' bindtap='changepaymenttype' id='OFF'>
+        <image src="../../images/icons/check{{paymenttype=='OFF'?'_active':''}}.png" style='width:3vh;height:3vh;'></image>
+      </view>
+  </view>
+  <view class='flex-row' style='padding-top:2vh;padding-bottom:2vh;padding-left:2vh;'>
+      <view class='flex-1'>
+        <image src="../../images/icons/mobilepay.png" style='width:3vh;height:3vh;'></image>
+      </view>
+      <view class='flex-8'>
+        在线支付<text class='primary font-75' style='margin-left:2vh'>(满300可使用20元优惠券)</text>
+      </view>
+      <view class='flex-1' bindtap='changepaymenttype' id='ON'>
+        <image src="../../images/icons/check{{paymenttype=='ON'?'_active':''}}.png" style='width:3vh;height:3vh;' ></image>
+      </view>
+  </view>
+</view>
+
+  <view style='margin-right:3vh;' class='text-right'>
+    <text class='light font-75'>实际支付金额：</text>
+    <text class='primary'>{{paymentamount}}元</text>
+  </view>
+
+  <view class="flex-row" style='margin:1.3vh;' >
+  <button class="weui-btn flex-1 font-75" type="primary" bindtap="submit" style='margin-top:0.3vh;margin-left:1vh;'>立即支付</button>
+  </view>

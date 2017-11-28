@@ -15,7 +15,7 @@ Page({
   data: {
     list: []
   },
-  comment(e){
+  comment(e) {
 
     var id = e.currentTarget.id; wx.navigateTo({
       url: 'comment?id=' + id,
@@ -73,10 +73,13 @@ Page({
   loadOrderList() {
     var member_id = app.globalData.member_id;
     var that = this;
-    moveassessApi.list({ member_id: member_id, "orderby": "orderdatetime desc" }, function (data) {
+    moveassessApi.list({ member_id: member_id,status:"PS", "orderby": "orderdatetime desc" }, function (data) {
       for (var i = 0; i < data.length; i++) {
         var date = new Date(data[i].orderdatetime);
         data[i].orderdatetime = utils.formatTime2(date);
+        date = new Date(data[i].created_date);
+        console.log(data[i].created_date);
+        data[i].created_date = utils.formatTime2(date);
       }
       that.setData({ list: data });
     });

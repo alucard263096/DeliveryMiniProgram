@@ -20,12 +20,31 @@ page{
 button[type="primary"] {
 color:#FFFFFF;
 background-color:#FF5155;
-
 }
 .button-hover[type="primary"] {
 color:#FFFFFF;
 background-color:#FA2D1F;
 }
+
+
+button[type="primary2"] {
+color:#FFFFFF;
+background-color:#1AAD19;
+}
+.button-hover[type="primary2"] {
+color:#FFFFFF;
+background-color:#179B16;
+}
+
+button[type="light"] {
+color:#FFFFFF;
+background-color:#CCCCCC;
+}
+.button-hover[type="light"] {
+color:#FFFFFF;
+background-color:#F2F2F2;
+}
+
 .flex-row{
   display: flex;
   flex-direction: row;

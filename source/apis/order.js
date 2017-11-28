@@ -33,5 +33,57 @@ class OrderApi
                   })
                 };
 
+                payment(request_json, callback, showLoading = true) {
+                  apiconfig.ShowLoading();
+                  wx.request({
+                    url: apiconfig.ServerUrl + '/order/payment',
+                    data: request_json,
+                    method: 'POST',
+                    dataType: 'json',
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    success: function (res) {
+                      if (callback != null) {
+                        callback(res.data);
+                      }
+                    },
+                    fail: function (res) {
+                      console.log(res);
+                      callback(false);
+                    },
+                    complete: function (res) {
+                      console.log(res);
+                      apiconfig.CloseLoading();
+                    }
+                  })
+                };
+
+
+                comment(request_json, callback, showLoading = true) {
+                  apiconfig.ShowLoading();
+                  wx.request({
+                    url: apiconfig.ServerUrl + '/order/comment',
+                    data: request_json,
+                    method: 'POST',
+                    dataType: 'json',
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    success: function (res) {
+                      if (callback != null) {
+                        callback(res.data);
+                      }
+                    },
+                    fail: function (res) {
+                      console.log(res);
+                      callback(false);
+                    },
+                    complete: function (res) {
+                      console.log(res);
+                      apiconfig.CloseLoading();
+                    }
+                  })
+                };
 }
 module.exports = OrderApi;
