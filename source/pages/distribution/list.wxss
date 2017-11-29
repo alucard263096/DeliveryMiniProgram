@@ -1,0 +1,22 @@
+/* pages/distribution/list.wxss */
+
+.primary_under{
+  border-bottom:1px solid #FF5155;
+  color:#FF5155;
+}
+.level1{
+  background: #ECF7FF;
+  color:#8DCDFF;
+  margin-left:2vh;
+  padding:3px;
+  padding-left:5px;
+  padding-right:5px;
+}
+.level2{
+  background: #FFF7EC;
+  color:#FFC985;
+  margin-left:2vh;
+  padding:3px;
+  padding-left:5px;
+  padding-right:5px;
+}

@@ -103,6 +103,9 @@ background-color:#F2F2F2;
 .font-75{
   font-size: 75%;
 }
+.font-70{
+  font-size: 75%;
+}
 .font-60{
   font-size: 60%;
 }

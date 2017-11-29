@@ -5,13 +5,30 @@
   </view>
   <view class='flex-2' style='padding-left:0.5vh;'>
     <view class='no-margin' style='margin-top:0vh;'>
-      <text class='font-75' style='font-weight:bold;'>{{name}}</text>
+      <text class='font-75' style='font-weight:bold;text-wrap:none;'>{{name}}</text>
     </view>
-    <view class='no-margin' style='margin-top:0vh;'wx:if="{{wechat!=''}}">
-      <text class='font-60' wx:if="wechat!=''">微信号：{{wechat}}</text>
+    <view class='no-margin' style='margin-top:0vh;'>
+      <text class='font-60'  wx:if="{{wechat!=''}}">微信号：{{wechat}}</text><text>\n</text>
     </view>
     <view class='no-margin' style='margin-top:0vh;'>
       <text class='font-60'>手机号码：{{mobile}}</text>
+    </view>
+    <view class='no-margin flex-row font-60' style='margin-top:3vh;'>
+        <view class='flex-1'>
+          <image src='../../images/icons/logon.png' style='width:5vh;height:5vh;'></image>
+        </view>
+        <view class='flex-2 light' style='padding-top:1vh'>
+          已登录
+        </view>
+        <view class='flex-1'>
+          <image src='../../images/icons/cert.png' style='width:5vh;height:5vh;' wx:if="{{authed_status=='A'}}"></image>
+        </view>
+        <view class='flex-2 light' style='padding-top:1vh'>
+          {{authed_status=='A'?"合作伙伴":""}}
+        </view>
+    </view>
+    <view>
+
     </view>
   </view>
   <view class='flex-1'>
@@ -55,12 +72,13 @@
       <text class='font-85'  wx:if="{{authed_status=='S'}}">认证\n审核中</text>
       <button  wx:if="{{authed_status==''}}" style='margin:2vh;'>未认证</button>
     </view>
-    <view class='flex-1  text-center'style='border-right:1px solid #cccccc'>
+    <view class='flex-1  text-center'style='border-right:1px solid #cccccc' bindtap='goDistribution'>
       <view>
         <image src='../../images/icons/query.png'  style='width:5vh;height:5vh;'></image>
       </view>
       <text class='font-85'>订单查询</text>
-    </view><view class='flex-1  text-center'>
+    </view>
+    <view class='flex-1  text-center' bindtap='goEarn'>
       <view>
         <image src='../../images/icons/money.png'  style='width:5vh;height:5vh;'></image>
       </view>

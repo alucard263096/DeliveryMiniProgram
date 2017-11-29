@@ -1,0 +1,119 @@
+<!--pages/distribution/list.wxml-->
+
+<view class="page" >
+    <view class="page__bd">
+        <view class="weui-search-bar" style='border-bottom:0px;'>
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">编号/手机号</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+        </view>
+    </view>
+</view>
+
+
+<view class='flex-row white' >
+<view class="flex-1 light text-center padding-2 {{tab=='a'?'primary_under':''}}" style='padding:2vh;' bindtap='changetab' id="a">
+  <view>
+    <text class='font-120'>{{memberlist.length}}</text><text  class='font-60'>位</text>
+  </view>
+  <view class="no-margin" style='margin-top:-1vh;margin-bottom:-1vh;'>
+    <text class='font-70'>我的分享</text>
+  </view>
+</view>
+<view class="flex-1 light text-center padding-2 {{tab=='b'?'primary_under':''}}" style='padding:2vh;' bindtap='changetab' id="b">
+  <view>
+    <text class='font-120'>{{orderlist.length}}</text><text  class='font-60'>次</text>
+  </view>
+  <view class="no-margin" style='margin-top:-1vh;margin-bottom:-1vh;'>
+    <text class='font-70'>总合作次数</text>
+  </view>
+</view>
+<view class="flex-1 light text-center padding-2 {{tab=='c'?'primary_under':''}}" style='padding:2vh;' bindtap='changetab' id="c">
+  <view>
+    <text class='font-120'>{{activeorderlist.length}}</text><text  class='font-60'>次</text>
+  </view>
+  <view class="no-margin" style='margin-top:-1vh;margin-bottom:-1vh;'>
+    <text class='font-70'>有效合作次数</text>
+  </view>
+</view>
+</view>
+
+<view wx:if="{{tab=='a'}}">
+  <block wx:for-items="{{memberlist}}" wx:key="{{index}}">
+  <view class='flex-row white' style='margin-top:2vh;'  wx:if="{{item.inkey==true}}">
+    <view class='flex-1' style='margin:2vh;margin-bottom:1vh;'>
+      <image src='{{item.photo}}' style='width:8vh;height:8vh;border-radius:2px;'></image>
+    </view>
+    <view class='flex-8' style='padding-top:1vh;'>
+      <view>
+      <text>{{item.name}}</text>
+      <text wx:if="{{item.level==1}}" class='level1 font-50'>一级</text>
+      <text wx:if="{{item.level==2}}" class='level2 font-50'>二级</text>
+      </view>
+      <view class='font-60 light'>分享时间：{{item.created_date}}</view>
+    </view>
+  </view>
+  </block>
+</view>
+
+
+<view wx:if="{{tab=='b'}}" class='font-70'>
+  <block wx:for-items="{{orderlist}}" wx:key="{{index}}">
+  <view class='flex-row white' style='margin-top:2vh;padding:2vh;padding-left:3vh;padding-right:3vh' wx:if="{{item.inkey==true}}" >
+    <view class='flex-8' style='margin-bottom:1vh;'>
+      <view>
+        <text >合作编号：</text><text class='light'>{{item.disorderno}}</text>
+      </view>
+      <view>
+        <text >手机号码：</text><text class='light'>{{item.member_mobile}}</text>
+      <text wx:if="{{item.level==1}}" class='level1 font-90' >一级</text>
+      <text wx:if="{{item.level==2}}" class='level2 font-90' >二级</text>
+      </view>
+      <view>
+        <text >订单时间：</text><text class='light'>{{item.orderdatetime}}</text>
+      </view>
+    </view>
+    <view class='flex-3 text-right' style='padding-top:5vh;'>
+      {{item.status=="C"?"已取消":""}} {{item.status=="A"?"未受理":""}} {{item.status=="W"?"受理中":""}} {{item.status=="O"?"已受理":""}} {{item.status=="OF"?"已受理":""}} {{item.status=="P"?"支付确认中":""}} {{item.status=="PS"?"支付完成":""}} {{item.status=="S"?"服务完成":""}}
+    </view>
+  </view>
+  </block>
+</view>
+
+
+
+<view wx:if="{{tab=='c'}}" class='font-70'>
+  <block wx:for-items="{{activeorderlist}}" wx:key="{{index}}">
+  <view class='flex-row white' style='margin-top:2vh;padding:2vh;padding-left:3vh;padding-right:3vh' wx:if="{{item.inkey==true}}" >
+    <view class='flex-8' style='margin-bottom:1vh;'>
+      <view>
+        <text >合作编号：</text><text class='light'>{{item.disorderno}}</text>
+      </view>
+      <view>
+        <text >手机号码：</text><text class='light'>{{item.member_mobile}}</text>
+      <text wx:if="{{item.level==1}}" class='level1 font-90' >一级</text>
+      <text wx:if="{{item.level==2}}" class='level2 font-90' >二级</text>
+      </view>
+      <view>
+        <text >订单时间：</text><text class='light'>{{item.orderdatetime}}</text>
+      </view>
+    </view>
+    <view class='flex-3 text-right' style='padding-top:5vh;'>
+      {{item.status=="C"?"已取消":""}} {{item.status=="A"?"未受理":""}} {{item.status=="W"?"受理中":""}} {{item.status=="O"?"已受理":""}} {{item.status=="OF"?"已受理":""}} {{item.status=="P"?"支付确认中":""}} {{item.status=="PS"?"支付完成":""}} {{item.status=="S"?"服务完成":""}}
+    </view>
+  </view>
+  </block>
+</view>

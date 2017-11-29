@@ -1,6 +1,10 @@
 {
   "pages": [
+    "pages/move/move",
+    "pages/distribution/widthdraw",
+    "pages/distribution/earn",
     "pages/member/member",
+    "pages/distribution/list",
     "pages/member/auth",
     "pages/order/comment",
     "pages/order/payment",
@@ -15,7 +19,6 @@
     "pages/moveassess/assemble",
     "pages/moveassess/carry",
     "pages/moveassess/floor",
-    "pages/move/move",
     "pages/index/index",
     "pages/logs/logs",
     "pages/delivery/delivery",

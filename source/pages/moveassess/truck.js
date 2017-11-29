@@ -24,7 +24,7 @@ Page({
     uploadpath:""
   },
   selectlocation(e){
-    var returntype=e.target.id;
+    var returntype=e.currentTarget.id;
     var address="";
     if(returntype=="start"){
       address = this.data.startposition;
@@ -174,7 +174,8 @@ Page({
     this.setData({id:options.id});
     var that=this;
     that.setData({ uploadpath: apiconfig.UploadFolderUrl });
-    if (options.trucktype!=undefined){
+
+    if (options.trucktype != undefined && options.trucktype.length>2){
       var trucktype = JSON.parse(options.trucktype);
       var distance = options.distance;
       var moveamount = options.moveamount;

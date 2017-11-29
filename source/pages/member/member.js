@@ -17,6 +17,17 @@ Page({
     member_id:"",
     authed_status:""
   }, 
+  goEarn(){
+
+    wx.navigateTo({
+      url: '../distribution/earn',
+    });
+  },
+  goDistribution(){
+    wx.navigateTo({
+      url: '../distribution/list',
+    });
+  },
   govalidate(){
     wx.navigateTo({
       url: 'auth',
@@ -60,7 +71,7 @@ Page({
       this.setData({
         member_id: app.globalData.member_id,
         photo: app.globalData.photo,
-        name: app.globalData.name,
+        name: app.globalData.name.substring(0,15),
         mobile: app.globalData.mobile
       });
       var that=this;

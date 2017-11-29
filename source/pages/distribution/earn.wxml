@@ -1,0 +1,66 @@
+<!--pages/distribution/list.wxml-->
+<view class='text-center' style='background:#FF5155;color:white;padding-bottom:4vh;'>
+  <view style='font-size:7vh'>
+    {{earnmoney}}
+  </view>
+  <view class='font-60' style='color:#FEB0AF'>我的总收益（元）</view>
+  <view bindtap='goWithdraw' >
+    <text class='font-60' style='color:#FEB0AF'>可提现收益（元）</text><text>{{earnmoney*0.2}}</text>
+    <text class='font-60' style='color:#FEB0AF;margin-left:3vh;'>立即提现 ></text>
+  </view>
+
+</view>
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-search-bar" style='border-bottom:0px;'>
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+            <icon type="clear" size="14"></icon>
+          </view>
+        </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search" type="search" size="14"></icon>
+          <view class="weui-search-bar__text">编号/手机号</view>
+        </label>
+      </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+    </view>
+    <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+    </view>
+  </view>
+</view>
+
+<view class='font-70'>
+  <block wx:for-items="{{activeorderlist}}" wx:key="{{index}}">
+    <view class='flex-row white' style='margin-bottom:2vh;padding:2vh;padding-left:3vh;padding-right:3vh' wx:if="{{item.inkey==true}}">
+      <view class='flex-8' style='margin-bottom:1vh;'>
+        <view>
+          <text>分享时间：</text>
+          <text class='light'>{{item.shared_date}}</text>
+        </view>
+        <view>
+          <text>合作编号：</text>
+          <text class='light'>{{item.disorderno}}</text>
+        </view>
+        <view>
+          <text>手机号码：</text>
+          <text class='light'>{{item.member_mobile}}</text>
+          <text wx:if="{{item.level==1}}" class='level1 font-90'>一级</text>
+          <text wx:if="{{item.level==2}}" class='level2 font-90'>二级</text>
+        </view>
+        <view>
+          <text>订单时间：</text>
+          <text class='light'>{{item.orderdatetime}}</text>
+        </view>
+      </view>
+      <view class='flex-4 text-right font-85' style='padding-top:5vh;'>
+        <text>收益：</text>
+        <text class='font-120 primary' wx:if="{{item.level==1}}">{{item.level1earn}}</text>
+        <text class='font-120 primary' wx:if="{{item.level==2}}">{{item.level2earn}}</text>
+      </view>
+    </view>
+  </block>
+</view>

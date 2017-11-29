@@ -1,0 +1,24 @@
+<!--pages/distribution/widthdraw.wxml-->
+<view class='white block block-radius' style='color:black;padding:4vh;'>
+<view class='font-70'>本次可提现金额（元）：</view>
+<view class='primary text-center ' style='margin:1vh;border-bottom:1px solid #f2f2f2'><text style='font-size:7vh'>{{earnmoney*0.2}}</text></view>
+<view class='font-60 light'>
+说明：
+</view>
+<view class='font-60 light'>
+1. 系统默认提现到盟友本人微信号
+</view>
+<view class='font-60 light'>
+2. 金额大于100元才可进行提现
+</view>
+
+
+    <view class="flex-row" style='margin-top:4vh;margin-left:6vh;margin-right:6vh;' >
+    <button class="weui-btn flex-3  font-75" type="light" bindtap="cancel" style='margin-top:0.3vh;margin-right:1vh;'>取消</button>
+    <view class='flex-1'></view>
+    <view class='flex-1'></view>
+    <button class="weui-btn flex-3  font-75" type="primary" bindtap="submit" style='margin-top:0.3vh;margin-left:1vh;'>申请提现</button>
+    </view>
+
+
+</view>
