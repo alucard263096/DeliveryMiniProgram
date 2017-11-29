@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/member/member",
+    "pages/member/auth",
     "pages/order/comment",
     "pages/order/payment",
     "pages/moveassess/truck",

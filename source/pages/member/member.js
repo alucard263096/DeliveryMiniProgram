@@ -1,6 +1,8 @@
 // pages/member/member.js
 
 const app = getApp();
+var MemberApi = require('../../apis/member.js');
+var memberApi = new MemberApi();
 
 Page({
 
@@ -13,8 +15,13 @@ Page({
     name:"",
     mobile:"",
     member_id:"",
-    isvalidated:false
+    authed_status:""
   }, 
+  govalidate(){
+    wx.navigateTo({
+      url: 'auth',
+    })
+  },
   goCommentList(){
     wx.navigateTo({
       url: '../order/commentlist',
@@ -31,22 +38,10 @@ Page({
   onLoad: function (options) {
     var that=this;
     app.loginInfoReadyCallback = res => {
-      console.log(app.globalData);
-      that.setData({
-        member_id: app.globalData.member_id,
-        photo: app.globalData.photo,
-        name: app.globalData.name,
-        mobile: app.globalData.mobile
-      });
+      
+      this.onShow();
     };
-    if(app.globalData.openid!=""){
-      that.setData({
-        member_id: app.globalData.member_id,
-        photo: app.globalData.photo,
-        name: app.globalData.name,
-        mobile: app.globalData.mobile
-      });
-    }
+    this.onShow();
 
   },
 
@@ -68,6 +63,12 @@ Page({
         name: app.globalData.name,
         mobile: app.globalData.mobile
       });
+      var that=this;
+      memberApi.info({ member_id: app.globalData.member_id},
+      function(data){
+        that.setData({
+          authed_status: data.authed_status});
+      },false);
     }
   },
 

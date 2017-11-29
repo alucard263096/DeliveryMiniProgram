@@ -44,6 +44,8 @@ App({
                 that.globalData.mobile = ret.mobile;
                 that.globalData.name = ret.name;
                 that.globalData.photo = ret.photo;
+
+
               }else{
                 wx.redirectTo({
                   url: '../../pages/signup/signup'

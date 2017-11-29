@@ -1,0 +1,48 @@
+<!--pages/member/auth.wxml-->
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">
+{{showTopTips}}
+</view>
+<view class='white block block-radius font-75' style='color:black;padding:4vh;'>
+  <view class='flex-row'>
+    <text class='flex-2' style='padding:1vh;'>真实姓名：</text>
+    <input class='flex-5' value='{{realname}}' style='width:100%;background:#f2f2f2;padding:1vh;' placeholder='必填' bindinput="realnamechange" />
+  </view>
+  <view class='flex-row' style='margin-top:2vh;'>
+    <text class='flex-2' style='padding:1vh;'>岗位：</text>
+    <input class='flex-5' value='{{position}}' style='width:100%;background:#f2f2f2;padding:1vh;' placeholder='必填' bindinput="positionchange" />
+  </view>
+  <view class='flex-row' style='margin-top:2vh;'>
+    <text class='flex-2' style='padding:1vh;'>小区地址：</text>
+    <input class='flex-5' value='{{address}}' style='width:100%;background:#f2f2f2;padding:1vh;' placeholder='必填' bindinput="addresschange" />
+  </view>
+  <view class='flex-row' style='margin-top:2vh;'>
+    <text class='flex-2' style='padding:1vh;'>小区照片：</text>
+  </view>
+  <view  class='flex-row' >
+    <view class='flex-3' >
+    <image  src='../../images/icons/close.png' wx:if="{{communityphoto1!=''}}" bindtap='clearphoto' id="1" style='width:3vh;height:3vh;position:absolute;left:18vh;'></image>
+    <image src='{{uploadpath}}/member/{{communityphoto1}}' style='width:15vh;height:15vh;' bindtap='photochange' id="1" wx:if="{{communityphoto1!=''}}" ></image>
+    <image src='../../images/imgadd.png' style='width:15vh;height:15vh;' bindtap='photochange' id="1"  wx:if="{{communityphoto1==''}}" ></image>
+    </view>
+    <view class='flex-3' >
+    <image  src='../../images/icons/close.png'wx:if="{{communityphoto2!=''}}" bindtap='clearphoto' id="2"   style='width:3vh;height:3vh;position:absolute;left:35vh;'></image>
+      <image src='{{uploadpath}}/member/{{communityphoto2}}' style='width:15vh;height:15vh;' bindtap='photochange' id="2" wx:if="{{communityphoto2!=''}}" ></image>
+      <image src='../../images/imgadd.png' style='width:15vh;height:15vh;' bindtap='photochange' id="2"  wx:if="{{communityphoto2==''}}" ></image>
+    </view>
+    <view class='flex-3' >
+    <image  src='../../images/icons/close.png' wx:if="{{communityphoto3!=''}}" bindtap='clearphoto' id="3"   style='width:3vh;height:3vh;position:absolute;left:51.5vh;'></image>
+      <image src='{{uploadpath}}/member/{{communityphoto3}}' style='width:15vh;height:15vh;' bindtap='photochange' id="3" wx:if="{{communityphoto3!=''}}" ></image>
+      <image src='../../images/imgadd.png' style='width:15vh;height:15vh;' bindtap='photochange' id="3"  wx:if="{{communityphoto3==''}}" ></image>
+    </view>
+  </view>
+
+
+
+    <view class="flex-row" style='margin:6vh;' >
+    <button class="weui-btn flex-3  font-75" type="light" bindtap="cancel" style='margin-top:0.3vh;margin-right:1vh;'>取消</button>
+    <view class='flex-1'></view>
+    <view class='flex-1'></view>
+    <button class="weui-btn flex-3  font-75" type="light" style='margin-top:0.3vh;margin-right:1vh;' wx:if="{{authed_status=='S'}}">审核中</button>
+    <button class="weui-btn flex-3  font-75" type="primary" bindtap="submit" wx:if="{{authed_status!='S'}}" style='margin-top:0.3vh;margin-left:1vh;'>提交</button>
+    </view>
+</view>

@@ -47,12 +47,13 @@
     <text>合作伙伴</text>
   </view>
   <view class='flex-row' style='padding:3vh;'>
-    <view class='flex-1 text-center' style='border-right:1px solid #cccccc'>
-      <view wx:if="{{isvalidated==true}}">
+    <view class='flex-1 text-center' style='border-right:1px solid #cccccc'  bindtap='govalidate'>
+      <view wx:if="{{authed_status=='A'}}">
         <image src='../../images/icons/validated.png'  style='width:5vh;height:5vh;'></image>
       </view>
-      <text class='font-85'  wx:if="{{isvalidated==true}}">认证通过</text>
-      <button  wx:if="{{isvalidated==false}}" bindtap='govalidate' style='margin:2vh;'>未认证</button>
+      <text class='font-85'  wx:if="{{authed_status=='A'}}">认证通过</text>
+      <text class='font-85'  wx:if="{{authed_status=='S'}}">认证\n审核中</text>
+      <button  wx:if="{{authed_status==''}}" style='margin:2vh;'>未认证</button>
     </view>
     <view class='flex-1  text-center'style='border-right:1px solid #cccccc'>
       <view>

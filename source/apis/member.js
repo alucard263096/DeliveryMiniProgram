@@ -8,7 +8,9 @@ class MemberApi
 {
    //获取用户的账户资料
                 info(request_json,callback, showLoading = true){
-					apiconfig.ShowLoading();
+                  if (showLoading){
+                    apiconfig.ShowLoading();
+                  }
                   wx.request({
                     url: apiconfig.ServerUrl+'/member/info', 
                     data:request_json,
@@ -28,7 +30,9 @@ class MemberApi
                     },
                     complete:function(res){
                       console.log(res);
-                      apiconfig.CloseLoading();
+                      if (showLoading) {
+                        apiconfig.CloseLoading();
+                      }
                     }
                   })
                 };
@@ -183,6 +187,32 @@ class MemberApi
                       callback(false);
                     },
                     complete:function(res){
+                      console.log(res);
+                      apiconfig.CloseLoading();
+                    }
+                  })
+                };
+                //获取二维码，方便加好友
+                auth(request_json, callback, showLoading = true) {
+                  apiconfig.ShowLoading();
+                  wx.request({
+                    url: apiconfig.ServerUrl + '/member/auth',
+                    data: request_json,
+                    method: 'POST',
+                    dataType: 'json',
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    success: function (res) {
+                      if (callback != null) {
+                        callback(res.data);
+                      }
+                    },
+                    fail: function (res) {
+                      console.log(res);
+                      callback(false);
+                    },
+                    complete: function (res) {
                       console.log(res);
                       apiconfig.CloseLoading();
                     }
