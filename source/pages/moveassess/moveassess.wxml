@@ -7,7 +7,7 @@
     <view class='flex-row' style='font-size:80%;' bindtap='callOffice'>
       <image  src="../../images/icons/telphone.png" style='height:3.5vh;width:3.5vh' />
       <text style='margin-left:2vh;'>人工报价</text>
-      <text style='width:37vh;text-align:right;'>400-700-8942</text>
+      <text style='width:35vh;text-align:right;'>400-700-8942</text>
     </view>
   </view>
   <view class="block block-radius" style='background:#53C8E6'  wx:if="{{id==0}}">

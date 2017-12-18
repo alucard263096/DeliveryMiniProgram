@@ -65,12 +65,14 @@ Page({
     var that=this;
     app.qqmapsdk.calculateDistance({
       mode:"driving",
-      to: [{
+      from:{
         latitude: this.data.startposition_lat,
         longitude: this.data.startposition_lng
-      }, {
+      },
+      to: [
+        {
           latitude: this.data.endposition_lat,
-          longitude: this.data.startposition_lng
+          longitude: this.data.endposition_lng
       }],
       success: function (res) {
         console.log(res);
