@@ -1,0 +1,7 @@
+<!--pages/todo/todo.wxml-->
+<view class="content-y">
+  <view class="content-x">
+    <image src="../../images/icons/telephone.png" class='icon' ></image>
+    <view class='font-100 text'><text>18666668888</text></view>
+  </view>
+</view>

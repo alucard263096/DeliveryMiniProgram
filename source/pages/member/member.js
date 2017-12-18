@@ -38,6 +38,12 @@ Page({
       url: '../order/commentlist',
     })
   },
+  goAboutUs(){
+    
+    wx.navigateTo({
+      url: '../aboutus/aboutus',
+    });
+  },
   goOrderList:function(){
       wx.navigateTo({
         url: '../order/list',

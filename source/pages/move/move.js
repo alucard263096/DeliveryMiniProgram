@@ -8,12 +8,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+
   },
   navigateToMoveAssess:function(){
       wx.navigateTo({
         url: '../moveassess/moveassess',
       })
+  },
+  navigateToMoveProject:function(){
+      wx.navigateTo({
+        url: '../moveproject/moveproject',
+      })
+  },
+  navigateToMoveLocal:function(){
+    wx.navigateTo({
+      url: '../todo/todo?title=同城货运',
+    })
+  },
+  navigateToMoveCross:function(){
+    wx.navigateTo({
+      url: '../todo/todo?title=城际货运',
+    })
+  },
+  navigateToMoveShare:function(){
+    wx.navigateTo({
+      url: '../todo/todo?title=共享平台',
+    })
+  },
+  navigateToMe:function(){
+    wx.switchTab({
+      url: '../../pages/member/member',
+    })
   },
   /**
    * 生命周期函数--监听页面加载

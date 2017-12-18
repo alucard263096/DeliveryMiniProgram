@@ -25,7 +25,10 @@
     "pages/moveassess/bigstuff",
     "pages/moveassess/specialstuff",
     "pages/moveassess/time",
-    "pages/order/commentlist"
+    "pages/order/commentlist",
+    "pages/todo/todo",
+    "pages/moveproject/moveproject",
+    "pages/aboutus/aboutus"
   ],
   "window": {
     "backgroundTextStyle": "light",

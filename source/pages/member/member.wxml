@@ -95,7 +95,7 @@
 
 
 <view class='white' style='margin-top:2vh;margin-bottom:2vh'>
-  <view class='font-90' style='padding:2vh;border-bottom:1px solid #cccccc'>
+  <view class='font-90' style='padding:2vh;border-bottom:1px solid #cccccc' bindtap='goAboutUs'>
     <text>关于我们</text>
   </view>
 </view>

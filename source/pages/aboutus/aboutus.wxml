@@ -1,0 +1,10 @@
+<!--pages/todo/todo.wxml-->
+<view class="content-y">
+    <image src="../../images/logo.png" class='avatar' ></image>
+    <view class='font-80 title'>星光之约搬家公司</view>
+    <view class='font-65 light'>星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司</view>
+    <view class="content-x">
+      <image src="../../images/icons/service.png" class='icon' ></image>
+      <view class='font-80 light text'><text>400-9999-8888</text></view>
+  </view>
+</view>

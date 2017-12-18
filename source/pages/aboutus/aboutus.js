@@ -1,31 +1,18 @@
-// pages/delivery/delivery.js
+// pages/move/move.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
   },
-
-  navigateToMoveLocal:function(){
-    wx.navigateTo({
-      url: '../todo/todo?title=同城货运',
-    })
-  },
-  navigateToMoveCross:function(){
-    wx.navigateTo({
-      url: '../todo/todo?title=城际货运',
-    })
-  },
-  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,0 +1,24 @@
+/* pages/todo/todo.wxss */
+.content-x{  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+} 
+.content-y{  
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;/*垂直居中*/
+} 
+.icon{
+  width:6vh;
+  height:6vh;
+}
+.text{
+  display:flex;
+  flex-direction:column;
+  margin-left:1.5vh;
+  justify-content:center;/*垂直居中*/
+}

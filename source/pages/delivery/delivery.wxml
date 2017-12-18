@@ -1,2 +1,15 @@
 <!--pages/delivery/delivery.wxml-->
-<text>pages/delivery/delivery.wxml</text>
+<view class="content">  
+  <view  class='block block-left' style='background-color:#979FFF;'>
+    <view bindtap='navigateToMoveLocal'>
+      <image src="../../images/icons/building.png" class='icon' ></image>
+      <view class='title'>同城货运</view>
+    </view>
+  </view>  
+  <view  class='block block-right' style='background-color:#7CBFFF;'>
+    <view bindtap='navigateToMoveCross'>
+      <image src="../../images/icons/bus.png" class='icon' ></image>
+      <view class='title'>城际货运</view>
+    </view>
+  </view>    
+</view> 

@@ -7,7 +7,7 @@
     </view>
   </view>  
   <view  class='block block-right' style='background-color:#53C8E6;'>
-    <view>
+    <view bindtap='navigateToMoveProject'>
       <image src="../../images/icons/truck.png" class='icon' ></image>
       <view class='title'>项目搬迁</view>
     </view>
@@ -16,13 +16,13 @@
 
 <view class="content">  
   <view  class='block block-left' style='background-color:#979FFF;'>
-    <view>
+    <view bindtap='navigateToMoveLocal'>
       <image src="../../images/icons/building.png" class='icon' ></image>
       <view class='title'>同城货运</view>
     </view>
   </view>  
   <view  class='block block-right' style='background-color:#7CBFFF;'>
-    <view>
+    <view bindtap='navigateToMoveCross'>
       <image src="../../images/icons/bus.png" class='icon' ></image>
       <view class='title'>城际货运</view>
     </view>
@@ -31,13 +31,13 @@
 
 <view class="content">  
   <view  class='block block-left' style='background-color:#FA5856;'>
-    <view>
+    <view bindtap='navigateToMoveShare'>
       <image src="../../images/icons/share.png" class='icon' ></image>
       <view class='title'>共享平台</view>
     </view>
   </view>  
   <view  class='block block-right' style='background-color:#37B9FF;'>
-    <view>
+    <view bindtap='navigateToMe'>
       <image src="../../images/icons/person_white.png" class='icon' ></image>
       <view class='title'>个人中心</view>
     </view>
