@@ -9,6 +9,11 @@ App({
       key: 'IDVBZ-TSAKD-TXG43-H442I-74KVK-6LFF5'
     });
 
+    var bmap = require('libs/baidumap/bmap-wx.min.js');
+    this.baidumapsdk = new bmap.BMapWX({
+      ak: 'hDSZ24EhDgUG9tDGrugKQq6vsKxd085j'
+    }); 
+
 
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -108,5 +113,6 @@ App({
     userInfo: null
   },
   qqmapsdk: null,
+  baidumapsdk: null,
   apiconfig: null
 })
