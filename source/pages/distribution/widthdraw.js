@@ -19,7 +19,6 @@ Page({
    */
   onLoad: function (options) {
     var member_id = app.globalData.member_id;
-    member_id=1;
     console.log(member_id);
     if (member_id == undefined || member_id == 0) {
       wx.switchTab({
@@ -28,7 +27,8 @@ Page({
     }
     var that = this;
     memberApi.info({ member_id: member_id }, function (data) {
-      that.setData({ earnmoney: data.earnmoney });
+      console.log(data);
+      that.setData({ earnmoney: data.earnmoney?data.earnmoney:0 });
     });
   },
   cancel(){

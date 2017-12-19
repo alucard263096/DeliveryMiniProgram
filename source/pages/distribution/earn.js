@@ -83,7 +83,7 @@ Page({
     }
     var that=this;
     memberApi.info({member_id:member_id},function(data){
-      that.setData({earnmoney:data.earnmoney});
+      that.setData({earnmoney:data.earnmoney?data.earnmoney:0});
     });
 
 
