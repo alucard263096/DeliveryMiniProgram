@@ -14,6 +14,10 @@ App({
       ak: 'hDSZ24EhDgUG9tDGrugKQq6vsKxd085j'
     }); 
 
+    var amap = require('libs/amap/amap-wx.js');
+    this.amapsdk = new amap.AMapWX({
+      key: 'f9672ee4ef3b856ab1b5f22e446b6e2a'
+    });
 
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -114,5 +118,6 @@ App({
   },
   qqmapsdk: null,
   baidumapsdk: null,
+  amapsdk:null,
   apiconfig: null
 })

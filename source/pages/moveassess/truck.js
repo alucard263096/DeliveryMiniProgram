@@ -89,6 +89,28 @@ Page({
       },
       fail: function (res) {
         console.log(res);
+        if(res.status == 373){
+          var from = that.data.startposition_lng + ',' +that.data.startposition_lat;
+          var to = that.data.endposition_lng + ',' + that.data.endposition_lat;
+          app.amapsdk.getDrivingRoute({
+            origin: from,
+            destination: to,
+            success: function(data){
+              if(data.paths[0] && data.paths[0].distance){
+                var distance = (data.paths[0].distance / 1000.0).toFixed(2);
+                that.setData({distance: distance});
+                that.calculateAmount(0, 0);
+              } else {
+                that.setData({ distance: 0 });
+                that.setData({ showTopTips: "获取不了距离，请重新选择起点和终点" });
+                that.calculateAmount(0, 0);
+              }              
+            },
+            fail: function(res){
+              console.log(res);
+            }
+          })
+        }
       },
       complete: function (res) {
         console.log(res);
