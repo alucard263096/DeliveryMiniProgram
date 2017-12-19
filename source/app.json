@@ -28,12 +28,13 @@
     "pages/order/commentlist",
     "pages/todo/todo",
     "pages/moveproject/moveproject",
-    "pages/aboutus/aboutus"
+    "pages/aboutus/aboutus",
+    "pages/coupons/coupons"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FF5155",
-    "navigationBarTitleText": "万家灯火搬家公司",
+    "navigationBarTitleText": "星光之约搬家公司",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {

@@ -54,11 +54,17 @@
       <text style='margin-top:0.9vh;'>终</text>
       <text style='margin-top:0.9vh;margin-left:4vh;'>{{endposition}}</text>
     </view>
-    <view class='flex-row'>
+    <view class='flex-row' style='border-bottom:solid 1px #f2f2f2;padding-bottom:2vh;padding-top:1vh;' >
       <view class='flex-1'>
         <text class='font-50 light'>实际距离：</text>
         <text class='font-60'>{{distance}}km</text>
       </view>
+      <view class='flex-1 text-right'>
+        <text class='font-50 light'>费用小计（元）：</text>
+        <text class="primary">{{distanceamount}}</text>
+      </view>
+    </view>
+    <view class='flex-row'>
       <view class='flex-1 text-right'>
         <text class='font-60 light'>费用小计（元）：</text>
         <text class='primary'>{{totalamount}}</text>
@@ -71,7 +77,7 @@
   <view style='background:white;margin-top:1vh;margin-right:2vh;margin-left:2vh;padding:4vh;padding-top:1vh;'>
     <text class='font-60'>说明</text>
     <view style='background:#F2F2F2;padding:1vh;' class='font-60 light'>
-      以实际地图测算为准，超过10公里，按照10元/公里。车，300公里以上9折，500公里以上8折；其中4.2米货车早晚高峰期限行。
+      以实际地图测算为准，10公里以内免里程费，超过10公里，按照10元每公里每车计价里程，300公里以上9折，500公里以上8折；其中4.2米货车早晚高峰期限行。
     </view>
   </view>
   <view class="flex-row" style='margin:2vh;' wx:if="{{id==0}}">

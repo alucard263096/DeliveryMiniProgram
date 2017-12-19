@@ -87,7 +87,7 @@
   </view>
 </view>
 
-<view class='white' style='margin-top:2vh;'>
+<view class='white' style='margin-top:2vh;' bindtap='goCoupons'>
   <view class='font-90' style='padding:2vh;border-bottom:1px solid #cccccc'>
     <text>我的卡券</text>
   </view>

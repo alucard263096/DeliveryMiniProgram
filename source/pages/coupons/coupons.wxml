@@ -1,0 +1,20 @@
+<block wx:for-items="{{list}}" wx:key="{{index}}">
+  <view style='background:url(../../images/coupon.png) no-repeat;background-size:100%;height:15vh;color:white;margin-top:2vh;padding-top:1vh;padding-left:5vh;' class='content-x'>
+    <view class='content-y' style='width:25%;'>
+      <text style='height:11vh;'>￥<text style='font-size:8vh;'>20</text></text>  
+      <text class='font-60'>满200元使用</text>
+    </view>
+    <view style='margin-top:1vh;border-right:dashed 1px white;'></view>
+    <view style='color:white;padding-top:1vh;padding-left:2vh;padding-right:5vh;' class='content-y'>
+      <view class='font-75 no-margin'  style='margin-top:2vh;'>
+        限于线上支付的订单,系统自动计算
+      </view>
+      <view class='font-75 no-margin' style='margin-top:2vh;'>
+        不兑现，不可叠加使用
+      </view>
+      <view class='font-75 no-margin' style='margin-top:2vh;'>
+        有效期至：{{item.enddate}}
+      </view>
+    </view>
+  </view>
+</block>

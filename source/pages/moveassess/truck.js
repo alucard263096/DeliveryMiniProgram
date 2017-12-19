@@ -13,6 +13,7 @@ Page({
   data: {
     id: 0,
     distance:0,
+    distanceamount:0,
     totalamount:0,
     startposition: "",
     startposition_lat:0,
@@ -152,6 +153,11 @@ Page({
       var distance=this.data.distance;
       var overdistance = Math.ceil(distance - 10);//distance-10;
 
+      if(overdistance < 0){
+        overdistance = 0;
+      }
+
+      var distanceamount = 0;
       var totalamount=0;
 
       for (var i = 0; i < trucktype.length; i++) {
@@ -160,14 +166,16 @@ Page({
       }
       //trucktype[i].amount=0;
       trucktype[i].amount = Number(trucktype[i].qty) * Number(trucktype[i].price);
-      totalamount += trucktype[i].amount + Number(trucktype[i].qty) * overdistance*10;
+      distanceamount += Number(trucktype[i].qty) * overdistance*10;
+      totalamount += trucktype[i].amount;
     }
+    totalamount += distanceamount;
     if(distance>500){
       totalamount=totalamount*0.8;
     }else if(distance>300){
       totalamount=totalamount*0.9;
     }
-    this.setData({ trucktype: trucktype, totalamount: totalamount});
+    this.setData({ trucktype: trucktype, distanceamount:distanceamount, totalamount: totalamount});
   },
   /**
    * 生命周期函数--监听页面加载
