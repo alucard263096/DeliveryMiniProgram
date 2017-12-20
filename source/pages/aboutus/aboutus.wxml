@@ -2,7 +2,11 @@
 <view class="content-y">
     <image src="../../images/logo.png" class='avatar' ></image>
     <view class='font-80 title'>星光之约搬家公司</view>
-    <view class='font-65 light'>星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司星光之约搬家公司是一家专业的搬家公司</view>
+    <view class='font-65 light' style="text-indent:2em;">星光之约搬家公司承接居民搬家，并为客户提供打包整理、出售纸箱、拆装家具、空调移机等其它配套服务。</view>
+    <view class='font-65 light' style="text-indent:2em;">星光之约搬家立志于做行业标杆企业，自主研发搬家计价器系统，真正做到价格“公正、公开、透明”，实现客户在移动端网络上清楚服务收费明细自助下单，对所有服务进行回访和跟踪，建立服务数据库来提升服务、改进质量。严格纠正行业内“乱收费、服务差、无售后”的现状。</view>
+    <view class='font-65 light' style="text-indent:2em;">居民搬家是每个家庭的大事，是乔迁之喜，因此一定要找一个称心如意、诚信可靠的品牌搬家公司。</view>
+    <view class='font-65 light' style="text-indent:2em;">星光之约搬家有多年的搬家经验足以解决您在搬家过程中所遇到的问题，星光之约搬家员工训练有素时刻为您着想，他们会象您自己一样细心呵护您的每一件家具、物品，星光之约的员工不是搬完家就了事，还会帮您摆放大件物品，让您有精力和心情品味搬入新居后的愉悦。</view>
+    <view class='font-65 light bottom' style="text-indent:2em;">要搬家，一定要找正规可靠放心的星光之约搬家公司！</view>
     <view class="content-x">
       <image src="../../images/icons/service.png" class='icon' ></image>
       <view class='font-80 light text'><text>400-9999-8888</text></view>

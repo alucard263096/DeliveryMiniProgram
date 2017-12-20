@@ -6,7 +6,6 @@
 } 
 .content-y{  
   position: fixed;
-  height: 50%;
   display:flex;
   flex-direction:column;
   align-items: center; 
@@ -23,8 +22,10 @@
   font-color: #e0e0e0;
 }
 .light{
-  margin-bottom:3vh;
   font-color:#a1a1a1;
+}
+.bottom {
+  margin-bottom:3vh;
 }
 .text{
   display:flex;
