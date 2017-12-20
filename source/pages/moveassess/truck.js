@@ -14,6 +14,7 @@ Page({
     id: 0,
     distance:0,
     distanceamount:0,
+    totalamountbeforediscount:0,
     totalamount:0,
     startposition: "",
     startposition_lat:0,
@@ -192,12 +193,13 @@ Page({
       totalamount += trucktype[i].amount;
     }
     totalamount += distanceamount;
+    var totalamountbeforediscount = totalamount;
     if(distance>500){
       totalamount=totalamount*0.8;
     }else if(distance>300){
       totalamount=totalamount*0.9;
     }
-    this.setData({ trucktype: trucktype, distanceamount:distanceamount, totalamount: totalamount});
+    this.setData({ trucktype: trucktype, distanceamount:distanceamount, totalamountbeforediscount: totalamountbeforediscount, totalamount: totalamount});
   },
   /**
    * 生命周期函数--监听页面加载

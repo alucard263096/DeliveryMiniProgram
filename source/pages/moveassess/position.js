@@ -54,7 +54,7 @@ Page({
     });
     app.qqmapsdk.getSuggestion({
       keyword: e.detail.value,
-      region: "深圳市",
+      region: "中国",
       region_fix: 1,
       //policy:1,
       success: function (res) {

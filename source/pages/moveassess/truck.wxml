@@ -66,7 +66,13 @@
     </view>
     <view class='flex-row'>
       <view class='flex-1 text-right'>
-        <text class='font-60 light'>费用小计（元）：</text>
+        <text class='font-60 light'>费用合计（元）：</text>
+        <text class='primary'>{{totalamountbeforediscount}}</text>
+      </view>
+    </view>
+    <view class='flex-row'>
+      <view class='flex-1 text-right'>
+        <text class='font-60 light'>折后价格（元）：</text>
         <text class='primary'>{{totalamount}}</text>
       </view>
     </view>
